@@ -1,4 +1,4 @@
-package Lesson4;
+package Lesson4.Frame15;
 
 public class ObjectLauncher {
 
