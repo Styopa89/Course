@@ -4,7 +4,7 @@ public class Phone {
     private String brend;
     private String model;
     private int imei;
-    private int number;
+    private long number;
     private boolean wiFi;
     private boolean blutooth;
 
