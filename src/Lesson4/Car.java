@@ -14,11 +14,11 @@ public class Car {
     private boolean isLights;
 
     private  Car(){
-        name = "WV";
-        number = "AA 1589 CB";
-        doorCount = 4;
-        color = Color.BLUE;
-        maxSpeed = 240;
+        name = "Lada";
+        number = "AA 2134 BA";
+        doorCount = 5;
+        color = Color.RED;
+        maxSpeed = 180;
         isMoving = false;
         isLights = false;
     }
