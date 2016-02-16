@@ -1,5 +1,10 @@
 package Tank;
 
+import Tank.Tanks.AbstractTank;
+import Tank.Tanks.BT7;
+import Tank.Tanks.T34;
+import Tank.Tanks.Tiger;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

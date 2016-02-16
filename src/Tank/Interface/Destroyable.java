@@ -1,4 +1,4 @@
-package Tank;
+package Tank.Interface;
 
 public interface Destroyable {
 

@@ -1,5 +1,8 @@
 package Tank;
 
+import Tank.Interface.Destroyable;
+import Tank.Interface.Drawable;
+
 import java.awt.*;
 
 public class Bullet implements Drawable, Destroyable {

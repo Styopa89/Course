@@ -1,4 +1,11 @@
-package Tank;
+package Tank.Tanks;
+
+import Tank.ActionField;
+import Tank.BattleField;
+import Tank.Bullet;
+import Tank.Direction;
+import Tank.Interface.Destroyable;
+import Tank.Interface.Drawable;
 
 import java.awt.*;
 
