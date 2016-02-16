@@ -14,11 +14,11 @@ public class Launcher {
 		}
 		printTankInfo(t);
 		
-//		System.out.println("Tank [color: " + t.getColor() + ", crew: " + t.getCrew() + ", maxSpeed: " + t.getMaxSpeed() + "]");
-//		Tank t2 = new Tank("red");
-//		System.out.println("Tank [color: " + t2.getColor() + ", crew: " + t2.getCrew() + ", maxSpeed: " + t2.getMaxSpeed() + "]");
-//		Tank t3 = new Tank("green", 5, 300);
-//		System.out.println("Tank [color: " + t3.getColor() + ", crew: " + t3.getCrew() + ", maxSpeed: " + t3.getMaxSpeed() + "]");
+
+		Tank t2 = new Tank("red");
+		System.out.println("Tank [color: " + t2.getColor() + ", crew: " + t2.getCrew() + ", maxSpeed: " + t2.getMaxSpeed() + "]");
+		Tank t3 = new Tank("green", 5, 300);
+		System.out.println("Tank [color: " + t3.getColor() + ", crew: " + t3.getCrew() + ", maxSpeed: " + t3.getMaxSpeed() + "]");
 
 	}
 	public static void printTankInfo (Tank[] t) {
