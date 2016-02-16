@@ -1,6 +1,6 @@
-package Lesson4;
+package Lesson4.Frame5;
 
-public class Frame15 {
+public class WorkPlace {
 	int amtMonitor;
 	int amt;
 	int amtMouse;
