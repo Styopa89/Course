@@ -8,4 +8,10 @@ public class Phone {
     private boolean wiFi;
     private boolean blutooth;
 
+    public void onWiFi(){}
+    public void offWiFi(){}
+    public void onblutooth(){}
+    public void offblutooth(){}
+    public void printInfo(){}
+
 }

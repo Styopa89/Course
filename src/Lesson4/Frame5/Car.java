@@ -7,4 +7,11 @@ public class Car {
     private int maxSpeed;
     private boolean isMoving;
     private boolean isLights;
+
+    public void onStart(){}
+    public void offStart(){}
+    public void pressGas(){}
+    public void notPressGas(){}
+    public void info(){}
+
 }

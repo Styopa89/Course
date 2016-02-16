@@ -7,4 +7,12 @@ public class Table {
     private long imei;
     private boolean gsmModule;
     private boolean wiFi;
+
+    public void onWiFi(){}
+    public void offWiFi(){}
+    public void onGsmModule(){}
+    public void offGsmModule(){}
+    public void printInfo(){}
+
+
 }
