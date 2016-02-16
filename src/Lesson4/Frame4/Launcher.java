@@ -1,4 +1,6 @@
-package Lesson4;
+package Lesson4.Frame4;
+
+import Lesson4.Frame4.Tank;
 
 public class Launcher {
 
@@ -21,7 +23,7 @@ public class Launcher {
 	}
 	public static void printTankInfo (Tank[] t) {
 		for (int i = 0; i< t.length; i++) {
-//			System.out.println("Tank [color: " + t[i].getColor() + ", crew: " + t[i].getCrew() + ", maxSpeed: " + t[i].getMaxSpeed() + "]");
+			System.out.println("Tank [color: " + t[i].getColor() + ", crew: " + t[i].getCrew() + ", maxSpeed: " + t[i].getMaxSpeed() + "]");
 		}
 	}
 

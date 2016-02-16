@@ -1,4 +1,4 @@
-package Lesson4;
+package Lesson4.Frame4;
 
 public class Tank {
 	private String color;
