@@ -1,8 +1,6 @@
 package Lesson4.Frame5;
 
-/**
- * Created by vstepyra on 16.02.2016.
- */
+
 public class Launcher {
     public static void main(String[] args) {
         Car car = new Car();
