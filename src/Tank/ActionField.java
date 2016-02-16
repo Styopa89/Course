@@ -21,9 +21,9 @@ public class ActionField extends JPanel {
     private Bullet bullet;
 
     public void runTheGame() throws Exception {
-//        defender.moveRandom();
+
 //        defender.moveToQuadrant(5,6);
-        defender.clean();
+       defender.clean();
 
     }
 
