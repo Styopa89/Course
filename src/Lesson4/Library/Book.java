@@ -1,19 +1,19 @@
-package Lesson4.HW5;
+package Lesson4.Library;
 
 public class Book {
-    private String name;
+    private String title;
     private String author;
     private Genre genre;
 
     public Book() {
 
     }
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
