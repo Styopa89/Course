@@ -11,10 +11,7 @@ public class Tiger extends Tank {
     }
     @Override
     public void printInfo(){
-        System.out.println(this.getName());
-        System.out.println(this.getColor());
-        System.out.println(this.getCrew());
-        System.out.println(this.getMaxSpeed());
-        System.out.println(this.armor);
+
+        System.out.println("Name: " + this.getName() + ", Color:" + this.getColor() + ", Crew:" + this.getCrew()  + ", MaxSpeed:" + this.getMaxSpeed() + ", Armor: " + armor);
     }
 }
