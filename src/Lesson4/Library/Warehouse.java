@@ -1,11 +1,14 @@
 package Lesson4.Library;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Warehouse {
 
     private Book[] library = new Book[10];
     private int size = 0;
+    private Book[] sortAutorLibrery;
+
     public Warehouse (){
 
     }
@@ -34,5 +37,12 @@ public class Warehouse {
         System.arraycopy(library, 0, zoomLibrary,0, size);
         return library = zoomLibrary;
     }
+
+
+
+
+
+
+
 
 }
