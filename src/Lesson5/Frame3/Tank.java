@@ -64,7 +64,11 @@ public class Tank {
 
     }
     public void move() {
-        System.out.println("tank move");
-        printInfo();
+        System.out.println(this.getName() + "  move");
+    }
+
+    @Override
+    public String toString() {
+        return "This tank name : " + this.getName();
     }
 }

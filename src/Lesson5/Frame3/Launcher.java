@@ -12,7 +12,8 @@ public class Launcher {
         bt7.printInfo();
         tiger.printInfo();
         bt7.move();
-
+        t34.move();
+        System.out.println(t34);
 
     }
 }
