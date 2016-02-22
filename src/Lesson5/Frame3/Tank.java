@@ -51,6 +51,7 @@ public class Tank {
     }
 
     public Tank(String color, int crew, int maxSpeed) {
+        this.name = "tank";
         this.color = color;
         this.crew = crew;
         setMaxSpeed(maxSpeed);

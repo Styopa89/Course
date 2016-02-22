@@ -7,7 +7,7 @@ public class Launcher {
         BT7 bt7 = new BT7();
         Tiger tiger = new Tiger();
 
-        tank.printInfo();
+//        tank.printInfo();
         t34.printInfo();
         bt7.printInfo();
         tiger.printInfo();
