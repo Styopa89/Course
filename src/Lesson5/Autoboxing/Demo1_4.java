@@ -5,8 +5,9 @@ import java.lang.Integer;
 
 public class Demo1_4 {
     public static void main(String[] args) {
-        int a = (new Integer(10)).intValue();
-        Double b = new Double(12);
+
+        Integer b = new Integer(12);
+        int a = (new Integer(b)).intValue();
         int c = 5;
 
         System.out.println(sum(a,c));
