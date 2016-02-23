@@ -2,6 +2,7 @@ package Lesson5.Frame23;
 
 
 public class Procent {
+
     private int monthlyPayment;
     private int interest;
     private int dreamSum;
