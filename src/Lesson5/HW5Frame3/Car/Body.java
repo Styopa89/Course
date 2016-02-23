@@ -1,4 +1,4 @@
-package Lesson5.HW5Frame3;
+package Lesson5.HW5Frame3.Car;
 
 
 public enum Body {

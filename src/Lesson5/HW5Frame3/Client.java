@@ -1,17 +1,29 @@
 package Lesson5.HW5Frame3;
 
+
 public class Client {
     private String name;
     private String secondName;
-    private int balanceBuy;
-    private int discont;
-    private Car car;
-
+    private String phoneNumber;
     public Client(String name) {
+    }
+
+    public Client(String name, String secondName, String phoneNumber) {
+        this.name = name;
+        this.secondName = secondName;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setName(String name) {
@@ -26,27 +38,4 @@ public class Client {
         this.secondName = secondName;
     }
 
-    public int getBalanceBuy() {
-        return balanceBuy;
-    }
-
-    public void setBalanceBuy(int balanceBuy) {
-        this.balanceBuy = balanceBuy;
-    }
-
-    public int getDiscont() {
-        return discont;
-    }
-
-    public void setDiscont(int discont) {
-        this.discont = discont;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
 }

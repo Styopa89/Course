@@ -1,38 +1,30 @@
 package Lesson5.HW5Frame3;
 
+import Lesson5.HW5Frame3.Car.Car;
 
 public class Transaction {
-    private Car[] cars;
-    private Client[] clients;
-    private SalesJornal[] salesJornals;
+        private Car car;
+        private Client client;
+        private int number;
 
-    public Transaction() {
-        Car[] cars = new Car[20];
-        Client[] clients = new Client[20];
+    public Transaction(Client client, Car car, int number) {
+        this.car = car;
+        this.client = client;
+        this.number = number;
     }
 
-    public Transaction(Car[] cars, Client[] clients) {
-        this.cars = cars;
-        this.clients = clients;
+    public Car getCar() {
+        return car;
     }
 
-    public void sellCar (Client client, Car car){
-        System.out.println("sellCar");
+    public Client getClient() {
+        return client;
     }
 
-    public void getInfoWarehauseCar(Car[] cars){
-        System.out.println("infoWarehauseCar");
+    public int getNumber() {
+        return number;
     }
 
-    public void getBDClients(Client[] clients){
-        System.out.println("BD Clients");
-    }
 
-    public Car[] setNewCar(Car car){
-        return cars;
-    }
-
-    public Client[] setNewClient(Client client) {
-        return clients;
-    }
 }
+
