@@ -15,6 +15,7 @@ public class DemoShopCar {
 
         System.out.println("----------PURCHASE IN THIS DAY--------------");
         shop.sellThisDay();
+        System.out.println("The end");
 
     }
 }
