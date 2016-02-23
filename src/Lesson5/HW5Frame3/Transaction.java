@@ -7,6 +7,7 @@ public class Transaction {
         private Client client;
         private int number;
 
+
     public Transaction(Client client, Car car, int number) {
         this.car = car;
         this.client = client;

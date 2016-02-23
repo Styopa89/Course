@@ -37,6 +37,7 @@ public class Shop {
     }
 
     public void buyCar(Client client, Car car, int amount) {
+        System.out.println(day);
         if (car.getAmount() >= amount && car.getAmount() > 0) {
             transactions[day][purcheseNumber++] = new Transaction(client, car, amount);
             car.setAmount(car.getAmount() - amount);
@@ -66,6 +67,15 @@ public class Shop {
     }
 
     public void allSellCarsWeek(){
-
+        for (int i = 0; i < 7; i++){
+            System.out.print((i+1) + " day sell: " + this.sellCarsInDay(transactions[day-7+i]) + " cars; ");
+        }
+    }
+    private int sellCarsInDay(Transaction[] tr){
+        int size = 0;
+        for (int i = 0; tr[size] != null; i++){
+            size += tr[size].getNumber();
+        }
+        return size;
     }
 }

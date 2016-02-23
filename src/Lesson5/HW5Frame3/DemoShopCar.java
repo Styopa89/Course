@@ -8,8 +8,8 @@ public class DemoShopCar {
 
 //        shop.printBDClient();
         System.out.println("--------------------------------------------------");
-        shop.printBDCars();
-
+//        shop.printBDCars();
+        shop.allSellCarsWeek();
 
     }
 }
