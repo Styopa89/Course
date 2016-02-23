@@ -4,6 +4,7 @@ package Lesson5.HW5Frame3;
 public class Transaction {
     private Car[] cars;
     private Client[] clients;
+    private SalesJornal[] salesJornals;
 
     public Transaction() {
         Car[] cars = new Car[20];

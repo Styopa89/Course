@@ -6,7 +6,7 @@ public class SalesJornal {
         private Client client;
         private long data;
 
+        public SalesJornal() {
 
-    public SalesJornal() {
-           }
+        }
 }
