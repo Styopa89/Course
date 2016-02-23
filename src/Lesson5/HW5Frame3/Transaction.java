@@ -1,6 +1,6 @@
 package Lesson5.HW5Frame3;
 
-import Lesson5.HW5Frame3.Car.Car;
+import Lesson5.HW5Frame3.ShopCar.Car;
 
 public class Transaction {
         private Car car;

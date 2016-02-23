@@ -1,6 +1,6 @@
 package Lesson5.HW5Frame3;
 
-import Lesson5.HW5Frame3.Car.Car;
+import Lesson5.HW5Frame3.ShopCar.Car;
 
 public class Shop {
 
@@ -22,8 +22,27 @@ public class Shop {
         purcheseNumber = 0;
     }
 
+    public void printBDClient() {
+        for (int i = 0; i < sizeClient; i++){
+            System.out.println("Name: " + clients[i].getName() + ", Second Name: " + clients[i].getSecondName() +
+                ", Phone number: " +clients[i].getPhoneNumber() + ";");
+        }
+    }
+
+    public void printBDCars() {
+        for (int i = 0; i < sizeCars; i++){
+            System.out.println("Brand: " + cars[i].getBrand() + "; Model: " + cars[i].getModel() +
+                    "; Body: " + cars[i].getBody() + " ----- " + "amount Car: " + cars[i].getAmount());
+        }
+    }
+
     public void buyCar(Client client, Car car, int amount) {
-        transactions[day][purcheseNumber++] = new Transaction(client, car, amount);
+        if (car.getAmount() >= amount && car.getAmount() > 0) {
+            transactions[day][purcheseNumber++] = new Transaction(client, car, amount);
+            car.setAmount(car.getAmount() - amount);
+        } else {
+            System.out.println("You can't buy this car,  because there aren't many these cars on the warehouse");
+        }
     }
 
     public void newDay (){
@@ -34,6 +53,19 @@ public class Shop {
     public void addCar(Car car) {
         cars[sizeCars++] = car;
     }
+    public void addClients(Client client){
+        clients[sizeClient++] = client;
+    }
 
+    public Client[] getClients() {
+        return clients;
+    }
 
+    public Car[] getCars() {
+        return cars;
+    }
+
+    public void allSellCarsWeek(){
+
+    }
 }

@@ -1,8 +1,8 @@
-package Lesson5.HW5Frame3.Car;
+package Lesson5.HW5Frame3.ShopCar;
 
 
 public class Car {
-    protected Brand brand;
+    private Brand brand;
     private String model;
     private Body body;
     private int price;
@@ -11,7 +11,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(String model, Body body, int price, int amount) {
+    public Car(Brand brand, String model, Body body, int price, int amount) {
+        this.brand = brand;
         this.model = model;
         this.body = body;
         this.price = price;
@@ -52,5 +53,9 @@ public class Car {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 }
