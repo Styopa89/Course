@@ -3,7 +3,7 @@ package Lesson5.HW5Frame3;
 
 public class DemoShopCar {
     public static void main(String[] args) {
-        TestShop ts = new TestShop();
+        TestBDCarAndClient ts = new TestBDCarAndClient();
         Shop shop = ts.getSh();
         System.out.println("-------------PRICE--------------");
         shop.printPrice();
