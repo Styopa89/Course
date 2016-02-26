@@ -1,4 +1,4 @@
-package Lesson6.Frame13.shapes;
+package Lesson6.Shapes;
 
 import java.awt.*;
 
