@@ -14,6 +14,8 @@ public class MyPersonalException extends RuntimeException {
            System.out.println("this IllegalArgumentException");
        } catch (RuntimeException e) {
            System.out.println("this InterruptedException");
+       } catch (Exception e) {
+           e.printStackTrace();
        } finally {
            System.out.println("this finally");
        }

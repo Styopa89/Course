@@ -6,12 +6,12 @@ import Lesson5.HW5Frame3.ShopCar.Brand;
 import Lesson5.HW5Frame3.ShopCar.Car;
 
 
-public class TestBDCarAndClient {
+public class TestShop {
     Car car;
     Client client;
     Shop sh;
 
-    public TestBDCarAndClient() {
+    public TestShop() {
         sh = new Shop();
         this.addClients();
         this.addCar();

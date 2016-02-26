@@ -43,6 +43,7 @@ public class BattleField {
         public void updateQuadrant(int v, int h, String str) {
             battleField[v][h] = str;
         }
+
         public String getRandomLacationAgressor() {
            String location = "0_128";
             int x = 0;

@@ -48,6 +48,26 @@ public class Tank {
 		this.crew = crew;
 		setMaxSpeed(maxSpeed);
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Tank tank = (Tank) o;
+
+		if (crew != tank.crew) return false;
+		if (maxSpeed != tank.maxSpeed) return false;
+		return color.equals(tank.color);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = color.hashCode();
+		result = 31 * result + crew;
+		result = 31 * result + maxSpeed;
+		return result;
+	}
 }
 
