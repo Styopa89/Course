@@ -12,7 +12,7 @@ public class Frame4 {
             throw new IllegalStateException();
 
         } finally {
-            System.out.println("I want to be printed"); // is actually printed as well as ISE
+            System.out.println("I want to be printed");
         }
     }
 }
