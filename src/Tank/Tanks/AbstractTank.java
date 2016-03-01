@@ -11,6 +11,7 @@ import java.awt.*;
 
 public abstract class AbstractTank implements Drawable, Destroyable {
     protected int speed = 5;
+
     protected Color tankColor;
     protected Color towerColor;
     private int x;
