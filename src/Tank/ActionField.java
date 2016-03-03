@@ -1,5 +1,7 @@
 package Tank;
 
+import Tank.ObjectBattleField.Brink;
+import Tank.ObjectBattleField.Emply;
 import Tank.Tanks.AbstractTank;
 import Tank.Tanks.BT7;
 import Tank.Tanks.T34;
@@ -54,7 +56,7 @@ public class ActionField extends JPanel {
         } else {
             x += 1;
         }
-        if ("B".equals(battleField.scanQuadrant(y, x))){
+        if (battleField.scanQuadrant(y, x) instanceof Brink){
             abstractTank.fire();
         }
     }
@@ -143,8 +145,8 @@ public class ActionField extends JPanel {
         int v = Integer.valueOf(quadrant.substring(0, quadrant.indexOf("_")));
         int h = Integer.valueOf(quadrant.substring(quadrant.indexOf("_") + 1));
         if (h >= 0 && h < battleField.getH() && v >= 0 && v < battleField.getV()) {
-            if ("B".equals(battleField.scanQuadrant(v, h))) {
-                battleField.updateQuadrant(v, h, " ");
+            if (battleField.scanQuadrant(v, h) instanceof Brink) {
+                battleField.updateQuadrant(v, h, new Emply(v,h));
                 bullet.destroy();
                 return true;
             }
@@ -226,14 +228,15 @@ public class ActionField extends JPanel {
 
         for (int j = 0; j < battleField.getDimentionY(); j++) {
             for (int k = 0; k < battleField.getDimentionX(); k++) {
-                if (battleField.scanQuadrant(j, k).equals("B")) {
-                    String coordinates = getQuadrantXY(j + 1, k + 1);
-                    int separator = coordinates.indexOf("_");
-                    int y = Integer.parseInt(coordinates.substring(0, separator));
-                    int x = Integer.parseInt(coordinates.substring(separator + 1));
-                    g.setColor(new Color(0, 0, 255));
-                    g.fillRect(x, y, 64, 64);
-                }
+                   battleField.scanQuadrant(j,k).draw(g);
+//                if (battleField.scanQuadrant(j, k).equals("B")) {
+//                    String coordinates = getQuadrantXY(j + 1, k + 1);
+//                    int separator = coordinates.indexOf("_");
+//                    int y = Integer.parseInt(coordinates.substring(0, separator));
+//                    int x = Integer.parseInt(coordinates.substring(separator + 1));
+//                    g.setColor(new Color(0, 0, 255));
+//                    g.fillRect(x, y, 64, 64);
+//                }
             }
         }
             defender.draw( g);

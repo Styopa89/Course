@@ -1,6 +1,10 @@
 package Tank;
 
 
+import Tank.ObjectBattleField.Brink;
+import Tank.ObjectBattleField.Emply;
+import Tank.ObjectBattleField.ObjectBattleField;
+
 import java.util.Random;
 
 public class BattleField {
@@ -10,37 +14,37 @@ public class BattleField {
         private int h = 9;
         private int bfWidth = quadratPx * h;
         private	int bfHeight = quadratPx * v;
-        private String[][] battleField;
+        private ObjectBattleField[][] battleField;
 
         public BattleField() {
             this.battleField = generateBattleField(v, h);
         }
 
-        public BattleField(String[][] battleField) {
+        public BattleField(ObjectBattleField[][] battleField) {
             this.battleField = battleField;
         }
 
-        private String[][] generateBattleField( int v, int h) {
+        private ObjectBattleField[][] generateBattleField( int v, int h) {
             Random random = new Random();
-            String[][] battleField = new String[v][h];
+            ObjectBattleField[][] battleField = new ObjectBattleField[v][h];
             for (int i = 0; i < v; i++) {
                 for (int j = 0; j < h;  j++) {
                     int k = random.nextInt(2) + 1;
                     if (k == 1) {
-                        battleField[i][j] = " ";
+                        battleField[i][j] = new Brink(i,j);
                     } else {
-                        battleField[i][j] = "B";
+                        battleField[i][j] = new Emply(i,j);
                     }
                 }
 
             } return battleField;
         }
 
-        public String scanQuadrant(int v, int h) {
+        public ObjectBattleField scanQuadrant(int v, int h) {
             return battleField[v][h];
         }
 
-        public void updateQuadrant(int v, int h, String str) {
+        public void updateQuadrant(int v, int h, ObjectBattleField str) {
             battleField[v][h] = str;
         }
 
@@ -57,11 +61,9 @@ public class BattleField {
             if (i == 1) {
                 location = ((v - 1) * quadratPx) + "_128";
                 x = v -1;
-            } System.out.println(y + "_" + x);
-            if ("B".equals(battleField[y][x])) {
-                System.out.println(battleField[y][x]);
-                battleField[y][x] = " ";
-                System.out.println(battleField[y][x]);
+            }
+            if (battleField[y][x] instanceof Brink) {
+                battleField[y][x] = new Emply(y,x);
             }
             return location;
         }
