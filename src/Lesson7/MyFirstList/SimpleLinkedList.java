@@ -7,17 +7,29 @@ public class SimpleLinkedList {
 
     public SimpleLinkedList() {
        size = 0;
+       root = new Node();
     }
 
-    public void addFirst(Object o) {
-
+    public void addFirst(Object obj) {
+        Node n = new Node();
+        n.obj = obj;
+        if(root != null) {
+            n.node = root;
+        }
+        root = n;
+        size++;
     }
 
-    public void addLast(Object o) {
-
+    public void addLast(Object obj) {
+        Node n = root;
+        while (n != null && n.node != null) {
+            n = n.node;
+        }
+        n = new Node();
+        n.obj = obj;
     }
 
-    public void addAfter(Object newO, Object prevO) {
+    public void addAfter(Object newObj, Object prevObj) {
 
     }
 
@@ -25,8 +37,8 @@ public class SimpleLinkedList {
         return size;
     }
 
-    public class Node {
-        private Object o;
+    private class Node {
+        private Object obj;
         private Node node;
 
     }
