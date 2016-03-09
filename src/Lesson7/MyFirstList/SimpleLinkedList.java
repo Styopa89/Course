@@ -39,7 +39,19 @@ public class SimpleLinkedList {
     }
 
     public void addAfter(Object newObj, Object prevObj) {
-
+        Node n = new Node();
+        n.obj = newObj;
+        Node cp = root;
+            while (cp != null){
+                if (cp.obj.equals(prevObj)) {
+                    n.node = cp.node;
+                    cp.node = n;
+                    size++;
+                    return;
+                }
+                cp = cp.node;
+            }
+        new IllegalStateException("Cann't search object");
     }
 
     public int getSize() {
