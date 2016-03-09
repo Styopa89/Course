@@ -21,12 +21,21 @@ public class SimpleLinkedList {
     }
 
     public void addLast(Object obj) {
-        Node n = root;
-        while (n != null && n.node != null) {
-            n = n.node;
-        }
-        n = new Node();
+        Node n = new Node();
         n.obj = obj;
+
+        if ( root == null) {
+            root = n;
+        } else {
+            Node last = root;
+            Node cp = root;
+            while (cp.node != null) {
+                last = cp;
+                cp = cp.node;
+            }
+            last.node = n;
+        }
+        size++;
     }
 
     public void addAfter(Object newObj, Object prevObj) {
