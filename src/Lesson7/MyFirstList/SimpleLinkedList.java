@@ -6,8 +6,7 @@ public class SimpleLinkedList {
     private int size;
 
     public SimpleLinkedList() {
-        this.root = new Node();
-        this.size = 0;
+       size = 0;
     }
 
     public void addFirst(Object o) {
@@ -18,11 +17,19 @@ public class SimpleLinkedList {
 
     }
 
-    public void addAfter(Object o, Object newO) {
+    public void addAfter(Object newO, Object prevO) {
 
     }
 
     public int getSize() {
         return size;
     }
+
+    public class Node {
+        private Object o;
+        private Node node;
+
+    }
 }
+
+
