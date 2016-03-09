@@ -7,7 +7,6 @@ public class SimpleLinkedList {
 
     public SimpleLinkedList() {
        size = 0;
-       root = new Node();
     }
 
     public void addFirst(Object obj) {
@@ -23,18 +22,16 @@ public class SimpleLinkedList {
     public void addLast(Object obj) {
         Node n = new Node();
         n.obj = obj;
-
-        if ( root == null) {
-            root = n;
-        } else {
-            Node last = root;
-            Node cp = root;
-            while (cp.node != null) {
-                last = cp;
-                cp = cp.node;
-            }
-            last.node = n;
+        Node cp = root;
+        if (cp == null) {
+            cp = n;
+            size++;
+            return;
         }
+        while (cp.node != null) {
+            cp = cp.node;
+        }
+        cp.node = n;
         size++;
     }
 
@@ -51,11 +48,22 @@ public class SimpleLinkedList {
                 }
                 cp = cp.node;
             }
-        new IllegalStateException("Cann't search object");
+        throw  new IllegalStateException("Cann't search object");
     }
 
     public int getSize() {
         return size;
+    }
+
+    public void printList(){
+        if (size != 0){
+            Node cp = root;
+            while (cp.node != null) {
+                System.out.print(cp.obj + ", ");
+                cp = cp.node;
+            }
+            System.out.println(cp.obj);
+        }
     }
 
     private class Node {
