@@ -15,7 +15,7 @@ public class Launcher {
         classroom.enter(student);
 
         student = new Student();
-        student.setName(null);
+        student.setName("Ivan");
         student.setSecondName("Ivanov");
         classroom.enter(student);
 //        classroom.leave(student);
