@@ -14,11 +14,12 @@ public class DemoTestList {
         list.addLast("444");
         list.addLast("777");
         list.addLast("888");
+        list.printList();
+        System.out.println("-----------------------");
         list.addFirst("555");
         list.printList();
         System.out.println("-----------------------");
         list.addAfter("666","555");
-
         list.printList();
 
     }
