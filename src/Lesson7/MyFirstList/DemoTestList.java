@@ -1,6 +1,8 @@
 package Lesson7.MyFirstList;
 
 
+import java.util.Iterator;
+
 public class DemoTestList {
 
     public static void main(String[] args) {
@@ -21,6 +23,16 @@ public class DemoTestList {
         System.out.println("-----------------------");
         list.addAfter("666","555");
         list.printList();
+
+        for (Object o : list){
+            String str = (String) o;
+            System.out.print(str + ", ");
+        }
+        System.out.println();
+        for (Iterator<Object> it = list.iterator(); it.hasNext();){
+            Object o = it.next();
+            System.out.print(o + ", ");
+        }
 
     }
 }
