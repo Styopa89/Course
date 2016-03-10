@@ -119,6 +119,7 @@ public class SimpleLinkedList implements Iterable<Object> {
                  return cp.obj;
              }
              if (hasNext()){
+                 prev = cp;
                  cp = cp.node;
                  return cp.obj;
              }

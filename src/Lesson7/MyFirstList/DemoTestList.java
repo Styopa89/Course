@@ -38,6 +38,7 @@ public class DemoTestList {
         System.out.println();
         for (Iterator<Object> it = list.iterator(); it.hasNext();){
             it.next();
+            it.next();
             it.remove();
             break;
         }
