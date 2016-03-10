@@ -40,9 +40,6 @@ public class Person {
         result = 37 * result + ((Integer) age).hashCode();
         result = 37 * result + ((Long) salary).hashCode();
         return result;
-
-
-//        return super.hashCode();
     }
 
     @Override
