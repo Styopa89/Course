@@ -100,7 +100,7 @@ public class SimpleLinkedList implements Iterable<Object> {
                  cp = cp.node;
                  return cp.obj;
              }
-             throw  new IllegalStateException("List don't have more elements")
+             throw  new IllegalStateException("List don't have more elements");
          }
 
          @Override
