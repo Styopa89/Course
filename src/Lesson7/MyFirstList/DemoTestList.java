@@ -23,16 +23,17 @@ public class DemoTestList {
         System.out.println("-----------------------");
         list.addAfter("666","555");
         list.printList();
+        list.remove("555");
 
         for (Object o : list){
             String str = (String) o;
             System.out.print(str + ", ");
         }
-        System.out.println();
-        for (Iterator<Object> it = list.iterator(); it.hasNext();){
-            Object o = it.next();
-            System.out.print(o + ", ");
-        }
+//        System.out.println();
+//        for (Iterator<Object> it = list.iterator(); it.hasNext();){
+//            Object o = it.next();
+//            System.out.print(o + ", ");
+//        }
 
     }
 }

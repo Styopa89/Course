@@ -52,6 +52,26 @@ public class SimpleLinkedList implements Iterable<Object> {
         throw  new IllegalStateException("Cann't search object");
     }
 
+    public void remove(Object obj){
+        Node cp = root;
+        Node pred = root;
+        if (root.obj.equals(obj)){
+            root = root.node;
+            size--;
+            return;
+        }
+        while (cp != null){
+            if (cp.obj.equals(obj)) {
+               pred.node = cp.node;
+                size--;
+                return;
+            }
+            pred = cp;
+            cp = cp.node;
+        }
+        throw  new IllegalStateException("Cann't search object");
+    }
+
     public int getSize() {
         return size;
     }
@@ -105,6 +125,7 @@ public class SimpleLinkedList implements Iterable<Object> {
 
          @Override
          public void remove() {
+
 
          }
      }
