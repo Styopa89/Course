@@ -44,6 +44,10 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-       return this.hashCode() == obj.hashCode();
+        if (obj instanceof Person) {
+            Person p = (Person) obj;
+            return (name != null && name.equals(p.getName()) && age == p.getAge() && salary == p.getSalary());
+        }
+        return false;
     }
 }
