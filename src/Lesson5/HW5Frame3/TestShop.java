@@ -89,10 +89,6 @@ public class TestShop {
 
 
     }
-
-
-
-
     public Shop getSh() {
         return sh;
     }
