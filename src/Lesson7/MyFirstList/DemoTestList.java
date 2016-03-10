@@ -23,7 +23,8 @@ public class DemoTestList {
         System.out.println("-----------------------");
         list.addAfter("666","555");
         list.printList();
-        list.remove("555");
+        list.remove("111");
+        list.printList();
 
         for (Object o : list){
             String str = (String) o;
@@ -34,6 +35,12 @@ public class DemoTestList {
 //            Object o = it.next();
 //            System.out.print(o + ", ");
 //        }
-
+        System.out.println();
+        for (Iterator<Object> it = list.iterator(); it.hasNext();){
+            it.next();
+            it.remove();
+            break;
+        }
+        list.printList();
     }
 }

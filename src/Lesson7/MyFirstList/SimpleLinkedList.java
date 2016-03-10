@@ -100,6 +100,8 @@ public class SimpleLinkedList implements Iterable<Object> {
 
      class SLLIterator implements Iterator<Object>{
         private Node cp;
+         private Node prev;
+
 
          public SLLIterator() {
          }
@@ -125,8 +127,20 @@ public class SimpleLinkedList implements Iterable<Object> {
 
          @Override
          public void remove() {
-
-
+            if (!hasNext() && prev == null) {
+                cp = null;
+                root = null;
+            } else if(!hasNext() && prev != null) {
+                prev.node = null;
+                cp = null;
+            } else  if(hasNext() && prev == null) {
+                root = cp.node;
+                cp = root;
+            } else {
+                prev.node = cp.node;
+                cp = cp.node;
+            }
+            size--;
          }
      }
 }
