@@ -1,7 +1,9 @@
 package Lesson7.MyFirstList;
 
 
-public class SimpleLinkedList {
+import java.util.Iterator;
+
+public class SimpleLinkedList implements Iterable<Object> {
     private Node root;
     private int size;
 
@@ -65,11 +67,47 @@ public class SimpleLinkedList {
         }
     }
 
+    @Override
+    public Iterator<Object> iterator() {
+        return new SLLIterator();
+    }
+
     private class Node {
         private Object obj;
         private Node node;
 
     }
+
+     class SLLIterator implements Iterator<Object>{
+        private Node cp;
+
+         public SLLIterator() {
+         }
+
+
+         @Override
+         public boolean hasNext() {
+             return (cp == null && root != null) || (cp != null && cp.node != null);
+         }
+
+         @Override
+         public Object next() {
+             if (cp == null && root != null){
+                 cp = root;
+                 return cp.obj;
+             }
+             if (hasNext()){
+                 cp = cp.node;
+                 return cp.obj;
+             }
+             throw  new IllegalStateException("List don't have more elements")
+         }
+
+         @Override
+         public void remove() {
+
+         }
+     }
 }
 
 
