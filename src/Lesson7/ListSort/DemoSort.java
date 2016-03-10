@@ -8,7 +8,7 @@ public class DemoSort  {
 
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
-        Comparator c = new Comparator();
+
         list.add("sdgf");
         list.add("dfghv");
         list.add("ewdfew");
@@ -21,9 +21,10 @@ public class DemoSort  {
         list.add("jmubm");
         for (String l : list ){
             System.out.print(l + "  ");
-            System.out.println();
+
         }
-        Collections.sort(list, c);
+        System.out.println();
+        Collections.sort(list, new Comparator1());
 
         for (String l : list ){
             System.out.print(l + "  ");
