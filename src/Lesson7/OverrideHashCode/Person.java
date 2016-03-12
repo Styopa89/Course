@@ -5,8 +5,17 @@ public class Person {
     private String name;
     private int age;
     private long salary;
+    private Address address;
 
     public Person() {
+    }
+
+    public Address getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -39,6 +48,7 @@ public class Person {
         result = 37 * result + name.hashCode();
         result = 37 * result + ((Integer) age).hashCode();
         result = 37 * result + ((Long) salary).hashCode();
+        result = 37 * result + address.hashCode();
         return result;
     }
 
@@ -46,7 +56,8 @@ public class Person {
     public boolean equals(Object obj) {
         if (obj instanceof Person) {
             Person p = (Person) obj;
-            return (name != null && name.equals(p.getName()) && age == p.getAge() && salary == p.getSalary());
+            return (name != null && name.equals(p.getName()) && age == p.getAge() && salary == p.getSalary()
+                   && address.equals(p.getAddress()));
         }
         return false;
     }
