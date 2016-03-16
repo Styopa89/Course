@@ -9,7 +9,7 @@ public class HowToDraw extends JPanel {
 
     public HowToDraw(){
         x = 0;
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("HowToDraw");
         frame.setLocation(300,200);
         frame.setMinimumSize(new Dimension(600, 400));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
