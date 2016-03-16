@@ -24,6 +24,9 @@ public class HowToDraw extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        g.setColor(Color.gray);
+        g.fillRect(0,0,600,400);
+
         g.setColor(Color.BLUE);
         g.fillRect(x, 50, 20, 20);
 
