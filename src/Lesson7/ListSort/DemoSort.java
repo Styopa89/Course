@@ -1,6 +1,7 @@
 package Lesson7.ListSort;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -8,7 +9,7 @@ public class DemoSort  {
 
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
-
+        ArrayList<String> st = new ArrayList<>();
         list.add("sdgf");
         list.add("dfghv");
         list.add("ewdfew");

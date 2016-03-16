@@ -87,16 +87,18 @@ public class SimpleLinkedList implements Iterable<Object> {
         }
     }
 
-    @Override
-    public Iterator<Object> iterator() {
-        return new SLLIterator();
-    }
-
     private class Node {
         private Object obj;
         private Node node;
 
     }
+
+    @Override
+    public Iterator<Object> iterator() {
+        return new SLLIterator();
+    }
+
+
 
      class SLLIterator implements Iterator<Object>{
         private Node cp;
