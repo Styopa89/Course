@@ -1,8 +1,7 @@
-package Tank;
+package refactor.tank;
 
 import refactor.tank.bf.Destroyable;
 import refactor.tank.bf.Drawable;
-import refactor.tank.Direction;
 
 import java.awt.*;
 
@@ -10,7 +9,7 @@ public class Bullet implements Drawable, Destroyable {
     private int speed = 2;
     private int x;
     private int y;
-    private refactor.tank.Direction direction;
+    private Direction direction;
 
     public Bullet(int x, int y, Direction direction) {
         this.x = x;

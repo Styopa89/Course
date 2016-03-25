@@ -1,12 +1,12 @@
-package Tank.Tanks;
+package refactor.tank.bf.tanks;
 
 import refactor.tank.ActionField;
-import refactor.tank.bf.*;
 import refactor.tank.Direction;
+import refactor.tank.bf.BattleField;
 
 import java.awt.*;
 
-public class BT7 extends refactor.tank.bf.tanks.AbstractTank {
+public class BT7 extends AbstractTank {
     public BT7(ActionField af, BattleField bf) {
         super(af, bf);
         speed = super.getSpeed()/2;

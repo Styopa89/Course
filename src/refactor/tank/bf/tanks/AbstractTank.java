@@ -1,4 +1,4 @@
-package Tank.Tanks;
+package refactor.tank.bf.tanks;
 
 import refactor.tank.ActionField;
 import refactor.tank.bf.BattleField;

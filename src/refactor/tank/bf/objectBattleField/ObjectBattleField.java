@@ -1,4 +1,4 @@
-package Tank.ObjectBattleField;
+package refactor.tank.bf.objectBattleField;
 
 
 import refactor.tank.bf.Drawable;

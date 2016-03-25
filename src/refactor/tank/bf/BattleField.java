@@ -1,4 +1,4 @@
-package Tank;
+package refactor.tank.bf;
 
 
 import refactor.tank.bf.objectBattleField.Brink;
@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class BattleField {
 
-        private int quadratPx = 64;
+        public final static int quadratPx = 64;
         private int v = 9;
         private int h = 9;
         private int bfWidth = quadratPx * h;

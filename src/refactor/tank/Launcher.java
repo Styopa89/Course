@@ -1,12 +1,10 @@
-package Tank;
+package refactor.tank;
 
-
-import refactor.tank.ActionField;
 
 public class Launcher {
 
     public static void main(String[] args) throws Exception {
-        refactor.tank.ActionField af = new ActionField();
+        ActionField af = new ActionField();
         af.runTheGame();
 
     }

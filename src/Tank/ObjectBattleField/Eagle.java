@@ -1,12 +1,7 @@
 package Tank.ObjectBattleField;
 
 
-import Tank.Interface.Destroyable;
-import Tank.Interface.Drawable;
-
-import java.awt.*;
-
-public class Eagle extends ObjectBattleField {
+public class Eagle extends refactor.tank.bf.objectBattleField.ObjectBattleField {
 
 
     public Eagle(int h, int v) {

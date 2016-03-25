@@ -1,4 +1,4 @@
-package Tank;
+package refactor.tank;
 
 import refactor.tank.bf.objectBattleField.Brink;
 import refactor.tank.bf.objectBattleField.Emply;
@@ -7,8 +7,6 @@ import refactor.tank.bf.tanks.BT7;
 import refactor.tank.bf.tanks.T34;
 import refactor.tank.bf.tanks.Tiger;
 import refactor.tank.bf.BattleField;
-import refactor.tank.Bullet;
-import refactor.tank.Direction;
 
 import java.awt.Color;
 import java.awt.Dimension;

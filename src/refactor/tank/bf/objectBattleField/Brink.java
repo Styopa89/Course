@@ -1,9 +1,9 @@
-package Tank.ObjectBattleField;
+package refactor.tank.bf.objectBattleField;
 
 
 import java.awt.*;
 
-public class Brink extends refactor.tank.bf.objectBattleField.ObjectBattleField {
+public class Brink extends ObjectBattleField {
 
     public Brink(int v, int h) {
 

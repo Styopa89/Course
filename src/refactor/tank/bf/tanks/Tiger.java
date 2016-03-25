@@ -1,13 +1,13 @@
-package Tank.Tanks;
+package refactor.tank.bf.tanks;
 
 
 import refactor.tank.ActionField;
-import refactor.tank.bf.*;
 import refactor.tank.Direction;
+import refactor.tank.bf.BattleField;
 
 import java.awt.*;
 
-public class Tiger extends refactor.tank.bf.tanks.AbstractTank {
+public class Tiger extends AbstractTank {
     private int armor;
 
     public Tiger(ActionField af, BattleField bf) {
