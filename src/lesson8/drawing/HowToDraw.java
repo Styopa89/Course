@@ -5,7 +5,7 @@ package lesson8.drawing;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Font;
+
 
 
 public class HowToDraw extends JPanel {
