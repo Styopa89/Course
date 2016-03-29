@@ -3,7 +3,7 @@ package Tank.ObjectBattleField;
 
 import java.awt.*;
 
-public class Rock extends refactor.tank.bf.objectBattleField.ObjectBattleField {
+public class Rock extends ObjectBattleField {
 
 
     public Rock(int v, int h) {

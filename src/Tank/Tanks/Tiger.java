@@ -1,13 +1,11 @@
 package Tank.Tanks;
 
 
-import refactor.tank.ActionField;
-import refactor.tank.bf.*;
-import refactor.tank.Direction;
+import Tank.*;
 
 import java.awt.*;
 
-public class Tiger extends refactor.tank.bf.tanks.AbstractTank {
+public class Tiger extends AbstractTank {
     private int armor;
 
     public Tiger(ActionField af, BattleField bf) {
@@ -23,6 +21,9 @@ public class Tiger extends refactor.tank.bf.tanks.AbstractTank {
         tankColor = new Color(0,255,0);
         towerColor = new Color(255,0,0);
     }
+
+
+
     @Override
     public void destroy() {
         if (armor == 0) {

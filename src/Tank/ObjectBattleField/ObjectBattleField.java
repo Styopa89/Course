@@ -1,11 +1,11 @@
 package Tank.ObjectBattleField;
 
 
-import refactor.tank.bf.Drawable;
+import Tank.Interface.Drawable;
 
 import java.awt.*;
 
-public abstract class ObjectBattleField implements Drawable{
+public abstract class ObjectBattleField implements Drawable {
     private int v;
     private int h;
     protected Color color;
@@ -17,8 +17,8 @@ public abstract class ObjectBattleField implements Drawable{
 
     @Override
     public void draw(Graphics g) {
-        int x = v*64;
-        int y = h*64;
+        int x = h * 64;
+        int y = v * 64;
         g.setColor(color);
         g.fillRect(x, y, 64, 64);
 

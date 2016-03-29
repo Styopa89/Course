@@ -1,19 +1,28 @@
 package lesson8.drawing;
 
 
+
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Font;
+
 
 public class HowToDraw extends JPanel {
     private int x;
 
     public HowToDraw(){
         x = 0;
-        JFrame frame = new JFrame("HowToDraw");
+        JFrame frame = new JFrame("My window");
+
         frame.setLocation(300,200);
         frame.setMinimumSize(new Dimension(600, 400));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
+
+        frame.getContentPane().add(new JLabel("HI World !!")).setFont(new Font("Calibri", Font.BOLD, 52));
+
+
         frame.pack();
         frame.setVisible(true);
 
@@ -43,6 +52,8 @@ public class HowToDraw extends JPanel {
         Thread.sleep(1000);
 
         htd.repaint();
+
+
 
 
 

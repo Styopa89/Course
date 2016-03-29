@@ -1,13 +1,14 @@
 package Tank.Tanks;
 
 
-import refactor.tank.ActionField;
-import refactor.tank.bf.*;
-import refactor.tank.Direction;
+
+
+import Tank.*;
+
 
 import java.awt.*;
 
-public class T34 extends refactor.tank.bf.tanks.AbstractTank {
+public class T34 extends AbstractTank {
     public T34(ActionField af, BattleField bf) {
         super(af, bf);
         tankColor = new Color(255,0,0);

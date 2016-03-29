@@ -1,11 +1,11 @@
 package Tank.Tanks;
 
-import refactor.tank.ActionField;
-import refactor.tank.bf.BattleField;
-import refactor.tank.Bullet;
-import refactor.tank.Direction;
-import refactor.tank.bf.Destroyable;
-import refactor.tank.bf.Drawable;
+
+import Tank.ActionField;
+import Tank.BattleField;
+import Tank.Bullet;
+import Tank.Direction;
+import Tank.Interface.*;
 
 import java.awt.*;
 

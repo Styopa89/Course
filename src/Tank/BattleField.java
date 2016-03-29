@@ -1,11 +1,10 @@
 package Tank;
 
 
-import refactor.tank.bf.objectBattleField.Brink;
-import refactor.tank.bf.objectBattleField.Emply;
-import refactor.tank.bf.objectBattleField.ObjectBattleField;
-
 import java.util.Random;
+import Tank.Interface.*;
+import Tank.ObjectBattleField.*;
+import Tank.Tanks.*;
 
 public class BattleField {
 

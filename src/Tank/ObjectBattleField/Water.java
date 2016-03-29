@@ -1,11 +1,13 @@
 package Tank.ObjectBattleField;
 
 
-import refactor.tank.bf.Drawable;
+import Tank.Interface.*;
+
+
 
 import java.awt.*;
 
-public class Water extends refactor.tank.bf.objectBattleField.ObjectBattleField implements Drawable {
+public class Water extends ObjectBattleField implements Drawable {
 
 
     public Water(int v, int h) {
