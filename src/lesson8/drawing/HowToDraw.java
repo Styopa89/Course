@@ -19,14 +19,8 @@ public class HowToDraw extends JPanel {
         frame.setMinimumSize(new Dimension(600, 400));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
-
-        frame.getContentPane().add(new JLabel("HI World !!")).setFont(new Font("Calibri", Font.BOLD, 52));
-
-
         frame.pack();
         frame.setVisible(true);
-
-
     }
 
     @Override
