@@ -9,7 +9,7 @@ public class ShopUI {
     public ShopUI(Shop shop) {
         this.shop = shop;
         JFrame f = new JFrame("Car shop");
-        f.setMinimumSize(new Dimension(600, 400));
+        f.setMinimumSize(new Dimension(600, 200));
         f.setLocation(500, 200);
 
         f.getContentPane().add(createSellingPannel());
