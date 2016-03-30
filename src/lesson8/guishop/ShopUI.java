@@ -57,7 +57,10 @@ public class ShopUI {
         buy.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println( tfCount.getValue() + "buy");
+                String name = tfName.getText();
+                int count = Integer.parseInt(tfCount.getText());
+                String brand = (String)combo.getSelectedItem();
+                System.out.println(name + " " + brand + " " + count);
             }
         });
 
