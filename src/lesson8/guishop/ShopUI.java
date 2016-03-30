@@ -2,6 +2,7 @@ package lesson8.guishop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
 
 public class ShopUI {
@@ -41,6 +42,7 @@ public class ShopUI {
 
         JButton buy = new JButton("BUY");
 
+
         panel.add(lName, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.LINE_START, 0, new Insets(5, 0, 0, 0), 0, 0));
         panel.add(tfName, new GridBagConstraints(1, 1, 1, 1, 0, 0, GridBagConstraints.LINE_START, 0, new Insets(5, 0, 0, 0), 0, 0));
 
@@ -51,6 +53,13 @@ public class ShopUI {
         panel.add(tfCount, new GridBagConstraints(1, 3, 1, 1, 0, 0, GridBagConstraints.LINE_START, 0, new Insets(5, 0, 0, 0), 0, 0));
 
         panel.add(buy, new GridBagConstraints(1, 4, 1, 1, 0, 0, GridBagConstraints.LINE_START, 0, new Insets(5, 0, 0, 0), 0, 0));
+
+        buy.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println( tfCount.getValue() + "buy");
+            }
+        });
 
         return panel;
     }
