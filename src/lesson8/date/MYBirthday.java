@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class MYBirthday {
 
@@ -18,7 +19,8 @@ public class MYBirthday {
         System.out.println(format.format(birthday));
         Calendar c = new GregorianCalendar();
         c.setTime(birthday);
-        SimpleDateFormat mount = new SimpleDateFormat("EEE");
+        SimpleDateFormat mount = new SimpleDateFormat("EEEE");
         System.out.println(mount.format(birthday));
+        System.out.println(c.getDisplayName(7, 2, Locale.forLanguageTag("en")));
     }
 }
