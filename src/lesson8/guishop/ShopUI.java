@@ -30,7 +30,7 @@ public class ShopUI {
         tfName.setPreferredSize(new Dimension(100, 27));
 
         JLabel product = new JLabel("Brand: ");
-        String[] productCar = {"BMV", "AUDI", "WV", "MERCEDES"};
+       Object[] productCar = shop.getProduct().toArray();
         JComboBox combo = new JComboBox(productCar);
 //        combo.setSelectedIndex(0);
 
@@ -59,8 +59,8 @@ public class ShopUI {
             public void actionPerformed(ActionEvent e) {
                 String name = tfName.getText();
                 int count = Integer.parseInt(tfCount.getText());
-                String brand = (String)combo.getSelectedItem();
-                System.out.println(name + " " + brand + " " + count);
+                Product brand = (Product)combo.getSelectedItem();
+                System.out.println(name + " " + brand.getName() + " " + count);
             }
         });
 

@@ -23,7 +23,7 @@ public class ActionField extends JPanel {
     public void runTheGame() throws Exception {
 
 //        defender.moveToQuadrant(5,6);
-       defender.clean();
+//       defender.clean();
 
     }
 
@@ -55,7 +55,7 @@ public class ActionField extends JPanel {
             x += 1;
         }
         if (battleField.scanQuadrant(y, x) instanceof Brink){
-            abstractTank.fire();
+//            abstractTank.fire();
         }
     }
 
@@ -68,7 +68,7 @@ public class ActionField extends JPanel {
         if (legalMove(abstractTank)) {
             return;
         }
-        abstractTank.turn(abstractTank.getDirection());
+//        abstractTank.turn(abstractTank.getDirection());
 
         cleanQuadrant(abstractTank);
 
@@ -154,8 +154,8 @@ public class ActionField extends JPanel {
                     repaint();
                     Thread.sleep(3000);
                     String location = battleField.getRandomLacationAgressor();
-                    agressor = new Tiger(this, battleField, Integer.valueOf(location.substring(0, location.indexOf("_"))),
-                            Integer.valueOf(location.substring(location.indexOf("_") + 1)), Direction.NONE);
+//                    agressor = new Tiger(this, battleField, Integer.valueOf(location.substring(0, location.indexOf("_"))),
+//                            Integer.valueOf(location.substring(location.indexOf("_") + 1)), Direction.NONE);
                     repaint();
                 return true;
                     }
@@ -184,21 +184,21 @@ public class ActionField extends JPanel {
 
 
     public ActionField() throws Exception {
-        battleField = new BattleField();
-        defender = new T34(this, battleField);
-        String location = battleField.getRandomLacationAgressor();
-        agressor = new BT7(this, battleField, Integer.valueOf(location.substring(0, location.indexOf("_"))),
-                Integer.valueOf(location.substring(location.indexOf("_") + 1)), Direction.NONE);
-        System.out.println(defender.getSpeed());
-        bullet = new Bullet(-100, -100, Direction.NONE);
-
-        JFrame frame = new JFrame("BATTLE FIELD - CLASS");
-        frame.setLocation(750, 150);
-        frame.setMinimumSize(new Dimension(battleField.getBfWidth() + 14, battleField.getBfHeight() + 14 + 22));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.getContentPane().add(this);
-        frame.pack();
-        frame.setVisible(true);
+//        battleField = new BattleField();
+//        defender = new T34(this, battleField);
+//        String location = battleField.getRandomLacationAgressor();
+//        agressor = new BT7(this, battleField, Integer.valueOf(location.substring(0, location.indexOf("_"))),
+//                Integer.valueOf(location.substring(location.indexOf("_") + 1)), Direction.NONE);
+//        System.out.println(defender.getSpeed());
+//        bullet = new Bullet(-100, -100, Direction.NONE);
+//
+//        JFrame frame = new JFrame("BATTLE FIELD - CLASS");
+//        frame.setLocation(750, 150);
+//        frame.setMinimumSize(new Dimension(battleField.getBfWidth() + 14, battleField.getBfHeight() + 14 + 22));
+//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        frame.getContentPane().add(this);
+//        frame.pack();
+//        frame.setVisible(true);
     }
 
     @Override

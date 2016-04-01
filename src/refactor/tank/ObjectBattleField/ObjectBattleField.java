@@ -6,21 +6,37 @@ import refactor.tank.Interface.Drawable;
 import java.awt.*;
 
 public abstract class ObjectBattleField implements Drawable {
-    private int v;
-    private int h;
+    private int vertical;
+    private int horizontal;
     protected Color color;
 
-    public ObjectBattleField(int v, int h) {
-        this.v = v;
-        this.h = h;
+    public ObjectBattleField(int vertical, int horizontal) {
+        this.vertical = vertical;
+        this.horizontal = horizontal;
     }
 
     @Override
     public void draw(Graphics g) {
-        int x = h * 64;
-        int y = v * 64;
+        int x = horizontal * 64;
+        int y = vertical * 64;
         g.setColor(color);
         g.fillRect(x, y, 64, 64);
 
+    }
+
+    public int getVertical() {
+        return vertical;
+    }
+
+    public void setVertical(int vertical) {
+        this.vertical = vertical;
+    }
+
+    public int getHorizontal() {
+        return horizontal;
+    }
+
+    public void setHorizontal(int horizontal) {
+        this.horizontal = horizontal;
     }
 }
