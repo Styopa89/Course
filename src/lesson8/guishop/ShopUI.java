@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Vector;
 
 public class ShopUI {
     private Shop shop;
@@ -30,9 +33,9 @@ public class ShopUI {
         tfName.setPreferredSize(new Dimension(100, 27));
 
         JLabel product = new JLabel("Brand: ");
-       Object[] productCar = shop.getProduct().toArray();
+        Vector<Product> productCar = new Vector<Product>();
+        productCar.addAll(shop.getProduct());
         JComboBox combo = new JComboBox(productCar);
-//        combo.setSelectedIndex(0);
 
         JLabel countName = new JLabel("Count: ");
         NumberFormat count = NumberFormat.getNumberInstance();
@@ -60,7 +63,9 @@ public class ShopUI {
                 String name = tfName.getText();
                 int count = Integer.parseInt(tfCount.getText());
                 Product brand = (Product)combo.getSelectedItem();
-                System.out.println(name + " " + brand.getName() + " " + count);
+
+                Date data = new Date();
+                System.out.println(data + "  " +name + " " + brand.getName() + " " + count);
             }
         });
 
