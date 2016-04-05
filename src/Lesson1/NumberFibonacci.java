@@ -37,8 +37,7 @@ public class NumberFibonacci {
                 String preLastElement = listNubmerFibonacci.get((listNubmerFibonacci.size()) - 2);
                 listNubmerFibonacci.add(sumLastNumber(lastElement, preLastElement));
             }
-
-     return  listNubmerFibonacci.get(--number);
+        return  listNubmerFibonacci.get(--number);
     }
 
     private String sumLastNumber(String last, String preLast){
