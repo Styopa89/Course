@@ -1,10 +1,10 @@
 package day7tanks.bf.tanks;
 
-import day7tanks.Direction;
-import day7tanks.bf.Destroyable;
-import day7tanks.bf.Drawable;
+import day7tanks.bf.Direction;
+import day7tanks.bf.Bullet;
+import day7tanks.bf.objbf.BFObject;
 
-public interface Tank extends Drawable, Destroyable {
+public interface Tank extends BFObject {
 	
 	public Action setUp();
 

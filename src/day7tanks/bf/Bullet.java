@@ -1,11 +1,7 @@
-package day7tanks.bf.tanks;
+package day7tanks.bf;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
-import day7tanks.Direction;
-import day7tanks.bf.Destroyable;
-import day7tanks.bf.Drawable;
 
 public class Bullet implements Drawable, Destroyable {
 

@@ -2,18 +2,17 @@ package day7tanks.bf.tanks;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import day7tanks.Direction;
+import day7tanks.bf.Direction;
 import day7tanks.bf.BattleField;
+import day7tanks.bf.Bullet;
 
 public abstract class AbstractTank implements Tank {
 	
 	private int speed = 10;
 	protected int movePath = 1;
 
-	// 1 - up, 2 - down, 3 - left, 4 - right
 	private Direction direction;
 
-	// current position on BF
 	private int x;
 	private int y;
 	
@@ -88,16 +87,6 @@ public abstract class AbstractTank implements Tank {
 		destroyed = true;
 	}
 	
-	public void moveToQuadrant(int v, int h) throws Exception {
-
-	}
-	
-	public void moveRandom() throws Exception { 
-	}
-
-	public void clean() throws Exception {
-	}
-
 	public void updateX(int x) {
 		this.x += x;
 	}

@@ -1,25 +1,21 @@
 package day7tanks;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import day7tanks.bf.BFObject;
+
+import day7tanks.bf.Direction;
+import day7tanks.bf.objbf.BFObject;
 import day7tanks.bf.BattleField;
-import day7tanks.bf.Blank;
+import day7tanks.bf.objbf.Emply;
 import day7tanks.bf.tanks.Action;
 import day7tanks.bf.tanks.BT7;
-import day7tanks.bf.tanks.Bullet;
+import day7tanks.bf.Bullet;
 import day7tanks.bf.tanks.T34;
 import day7tanks.bf.tanks.Tank;
 
-/**
- * Updated to object oriented style.
- * 
- * @version 3.0
- */
 public class ActionField extends JPanel {
 
 	private boolean COLORDED_MODE = false;
@@ -29,9 +25,6 @@ public class ActionField extends JPanel {
 	private Tank aggressor;
 	private Bullet bullet;
 
-	/**
-	 * Write your code here.
-	 */
 	void runTheGame() throws Exception {
 		while (true) {
 			if (!aggressor.isDestroyed() && !defender.isDestroyed()) {
@@ -87,7 +80,7 @@ public class ActionField extends JPanel {
 				h--;
 			}
 			BFObject bfobject = battleField.scanQuadrant(v, h);
-			if (!(bfobject instanceof Blank) && !bfobject.isDestroyed()) {
+			if (!(bfobject instanceof Emply) && !bfobject.isDestroyed()) {
 				System.out.println("[illegal move] direction: " + direction
 						+ " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				return;
@@ -96,19 +89,15 @@ public class ActionField extends JPanel {
 
 			// process move
 	
-			while (covered < 64) {
+			while (covered < BattleField.QUADRANT_PX) {
 				if (direction == Direction.UP) {
 					tank.updateY(-step);
-	//				System.out.println("[move up] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else if (direction == Direction.DOWN) {
 					tank.updateY(step);
-	//				System.out.println("[move down] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else if (direction == Direction.LEFT) {
 					tank.updateX(-step);
-	//				System.out.println("[move left] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else {
 					tank.updateX(step);
-	//				System.out.println("[move right] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				}
 				covered += step;
 	
@@ -150,7 +139,7 @@ public class ActionField extends JPanel {
 
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			BFObject bfObject = battleField.scanQuadrant(y, x);
-			if (!bfObject.isDestroyed() && !(bfObject instanceof Blank)) {
+			if (!bfObject.isDestroyed() && !(bfObject instanceof Emply)) {
 				battleField.destroyObject(y, x);
 				return true;
 			}
@@ -193,16 +182,15 @@ public class ActionField extends JPanel {
 	public ActionField() throws Exception {
 		battleField = new BattleField();
 		defender = new T34(battleField);
-
-		String location = battleField.getAggressorLocation();
-		aggressor = new BT7(battleField,
-			Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.RIGHT);
+		aggressor = new BT7(battleField, 128, 128, Direction.RIGHT);
+//		battleField.addTank(defender);
+//		battleField.addTank(aggressor);
 
 		bullet = new Bullet(-100, -100, Direction.NONE);
 
-		JFrame frame = new JFrame("BATTLE FIELD, DAY 7");
+		JFrame frame = new JFrame("BATTLE FIELD - CLASS");
 		frame.setLocation(750, 150);
-		frame.setMinimumSize(new Dimension(battleField.getBfWidth(), battleField.getBfHeight() + 22));
+		frame.setMinimumSize(new Dimension(battleField.getBfWidth() + 14, battleField.getBfHeight() + 14 + 22));
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().add(this);
 		frame.pack();
@@ -212,25 +200,6 @@ public class ActionField extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
-		int i = 0;
-		Color cc;
-		for (int v = 0; v < 9; v++) {
-			for (int h = 0; h < 9; h++) {
-				if (COLORDED_MODE) {
-					if (i % 2 == 0) {
-						cc = new Color(252, 241, 177);
-					} else {
-						cc = new Color(233, 243, 255);
-					}
-				} else {
-					cc = new Color(180, 180, 180);
-				}
-				i++;
-				g.setColor(cc);
-				g.fillRect(h * 64, v * 64, 64, 64);
-			}
-		}
 
 		battleField.draw(g);
 		defender.draw(g);

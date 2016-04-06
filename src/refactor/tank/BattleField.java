@@ -6,6 +6,7 @@ import java.util.Random;
 
 import refactor.tank.Interface.Drawable;
 import refactor.tank.ObjectBattleField.*;
+import refactor.tank.Tanks.Tiger;
 
 public class BattleField implements Drawable {
 
@@ -14,10 +15,11 @@ public class BattleField implements Drawable {
         private int h = 9;
         private int bfWidth = QUADRANT_PX * h;
         private	int bfHeight = QUADRANT_PX * v;
-        private ObjectBattleField[][] battleField ;
+        private ObjectBattleField[][] battleFieldStatic;
+
 
         public BattleField() {
-//            this.battleField = generateBattleField();
+
             String[][] bf = {
                     {"B", "B", "B", "B", "B", "B", "B", "B", "B"},
                     {"B", " ", " ", " ", " ", " ", " ", " ", "B"},
@@ -29,12 +31,12 @@ public class BattleField implements Drawable {
                     {"B", " ", " ", "B", "B", "B", " ", " ", "B"},
                     {"B", " ", " ", "B", "E", "B", " ", " ", "B"}
             };
-            this.battleField = arrayToListBattleFild(bf);
+            this.battleFieldStatic = arrayToListBattleFild(bf);
 
         }
 
         public BattleField(String[][] bf) {
-            this.battleField = arrayToListBattleFild(bf);
+            this.battleFieldStatic = arrayToListBattleFild(bf);
         }
 
     private ObjectBattleField[][] arrayToListBattleFild (String[][] bf) {
@@ -82,32 +84,34 @@ public class BattleField implements Drawable {
         }
 
         public ObjectBattleField scanQuadrant(int v, int h) {
-            return battleField[v][h];
+            return battleFieldStatic[v][h];
         }
 
         public boolean hitBullet(Bullet b){
+            v = b.getX()/64;
+            h = b.getY()/64;
 
-//            if (battleField[h][v] instanceof Emply || battleField[h][v] instanceof Water) {
-//                return false;
-//            }
-//            if (battleField[h][v] instanceof Rock && !(b.getTank() instanceof Tiger)){
-//                return true;
-//            }
-//            battleField[h][v] = new Emply(h,v);
-//            return true;
+            if (battleFieldStatic[h][v] instanceof Emply || battleFieldStatic[h][v] instanceof Water) {
+                return false;
+            }
+            if (battleFieldStatic[h][v] instanceof Rock && !(b.getTank() instanceof Tiger)){
+                return true;
+            }
+            battleFieldStatic[h][v] = new Emply(h,v);
+            return true;
         }
 
     @Override
     public void draw(Graphics g) {
-        for (int j = 0; j < battleField.length; j++) {
-            for (int k = 0; k < battleField.length; k++) {
-                battleField[j][k].draw(g);
+        for (int j = 0; j < battleFieldStatic.length; j++) {
+            for (int k = 0; k < battleFieldStatic.length; k++) {
+                battleFieldStatic[j][k].draw(g);
             }
         }
     }
 
        public void updateQuadrant(int v, int h, ObjectBattleField str) {
-        battleField[v][h] = str;
+        battleFieldStatic[v][h] = str;
         }
 
         public int getQuadratPx() {

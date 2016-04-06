@@ -1,98 +1,133 @@
 package day7tanks.bf;
 
+import day7tanks.bf.objbf.*;
+import day7tanks.bf.tanks.*;
 import java.awt.Graphics;
 
 public class BattleField implements Drawable {
-	
-	public static final String BRICK = "B";
-	public static final String EAGLE = "E";
-	public static final String ROCK = "R";
-	public static final String WATER = "W";
-	
-	private int bfWidth = 576;
-	private int bfHeight = 576;
 
-	private String[][] battleFieldTemplate = {
-			{"B", "B", "B", "B", "B", "B", "B", "B", "B"},
-			{"B", " ", " ", " ", " ", " ", " ", " ", "B"},
-			{"B", "B", "B", " ", "B", " ", "B", "B", "B"},
-			{"B", "B", "B", " ", " ", " ", "B", "B", "B"},
-			{"B", "B", "B", " ", "B", " ", "B", "B", "B"},
-			{"B", "B", " ", "B", "B", "B", " ", "B", "B"},
-			{"B", "B", " ", " ", " ", " ", " ", "B", "B"},
-			{"B", " ", " ", "B", "B", "B", " ", " ", "B"},
-			{"B", " ", " ", "B", "E", "B", " ", " ", "B"}
-		};
 
-	private BFObject[][] battleField = new BFObject[9][9];
+	public final static int QUADRANT_PX = 64;
+	private int v = 9;
+	private int h = 9;
+	private int bfWidth = QUADRANT_PX * h;
+	private	int bfHeight = QUADRANT_PX * v;
+	private BFObject[][] battleFieldStatic;
+//	private BFObject[][] battleFieldDinamic;
+
 
 	public BattleField() {
-		drawBattleField();
+
+		String[][] bf = {
+				{"B", "B", "B", "B", "B", "B", "B", "B", "B"},
+				{"B", " ", " ", " ", " ", " ", " ", " ", "B"},
+				{"B", "B", " ", " ", "B", " ", "B", "B", "B"},
+				{"B", "B", "R", " ", "W", " ", "B", "B", "B"},
+				{"B", "B", "W", " ", "W", " ", "B", "B", "B"},
+				{"B", "B", "B", "R", "R", "R", " ", "B", "B"},
+				{"B", "B", " ", " ", " ", " ", " ", "B", "B"},
+				{"B", " ", " ", "B", "B", "B", " ", " ", "B"},
+				{"B", " ", " ", "B", "E", "W", " ", " ", "B"}
+		};
+		this.battleFieldStatic = arrayBattleFildStatic(bf);
+//		this.battleFieldDinamic = arrayBattleFieldDinamic();
+
 	}
 
-	public BattleField(String[][] battleField) {
-		this.battleFieldTemplate = battleField;
-		drawBattleField();
+	public BattleField(String[][] bf) {
+		this.battleFieldStatic = arrayBattleFildStatic(bf);
+//		this.battleFieldDinamic = arrayBattleFieldDinamic();
 	}
-	
-	private String getQuadrantXY(int v, int h) {
-		return (v - 1) * 64 + "_" + (h - 1) * 64;
-	}
-	
-	private void drawBattleField() {
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				String coordinates = getQuadrantXY(i + 1, j + 1);
-				int separator = coordinates.indexOf("_");
-				int y = Integer.parseInt(coordinates
-						.substring(0, separator));
-				int x = Integer.parseInt(coordinates
-						.substring(separator + 1));
 
-				String obj = battleFieldTemplate[i][j];
-				BFObject bfObject;
-				if (obj.equals(BRICK)) {
-					bfObject = new Brick(x, y);
-				} else if (obj.equals(ROCK)) {
-					bfObject = new Rock(x, y);
-				} else if (obj.equals(EAGLE)) {
-					bfObject = new Eagle(x, y);
-				} else if (obj.equals(ROCK)) {
-					bfObject = new Water(x, y);
+	private BFObject[][] arrayBattleFildStatic(String[][] bf) {
+		BFObject[][] battleField = new BFObject[v][h];
+		for (int i = 0; i < bf.length; i++) {
+			for (int j = 0; j < bf[i].length;  j++) {
+				String str = bf[i][j];
+				if ("B".equals(str)) {
+					battleField[i][j] = new Brick(i,j);
+				} else if (" ".equals(str)) {
+					battleField[i][j] = new Emply(i,j);
+				} else if ("R".equals(str)) {
+					battleField[i][j] = new Rock(i,j);
+				} else if ("W".equals(str)){
+					battleField[i][j] = new Water(i,j);
 				} else {
-					bfObject = new Blank(x, y);
+					battleField[i][j] = new Eagle(i,j);
 				}
-				battleField[i][j] = bfObject;
 			}
-		}
+
+		} return battleField;
+
 	}
-	
-	@Override
-	public void draw(Graphics g) {
-		for (int j = 0; j < battleField.length; j++) {
-			for (int k = 0; k < battleField.length; k++) {
-				battleField[j][k].draw(g); 
-			}
-		}
-	}
-	
-	public void destroyObject(int v, int h) {
-		battleField[v][h].destroy();
-	}
+
+//	private BFObject[][] arrayBattleFieldDinamic () {
+//		return new BFObject[v][h];
+//	}
+//
+//	public void addTank(Tank tank) {
+//		int v = tank.getY() / QUADRANT_PX;
+//		int h = tank.getX() / QUADRANT_PX;
+//		battleFieldDinamic[v][h] = tank;
+//	}
+
+
+//	private BFObject[][] generateBattleField() {
+//		BFObject[][] battleField = new BFObject[v][h];
+//		Random random = new Random();
+//		for (int i = 0; i < v; i++) {
+//			for (int j = 0; j < h;  j++) {
+//				int k = random.nextInt(8) + 1;
+//				if (k == 1 || k == 5 || k == 6) {
+//					battleField[i][j] = new Brick(i,j);
+//				} else if (k == 2 || k == 7 || k == 8) {
+//					battleField[i][j] = new BFObject.Emply(i,j);
+//				} else if (k == 3) {
+//					battleField[i][j] = new Rock(i,j);
+//				} else {
+//					battleField[i][j] = new Water(i,j);
+//				}
+//			}
+//
+//		}
+//		battleField[v-1][h/2] = new Eagle(v-1, h/2);
+//		return battleField;
+//	}
 
 	public BFObject scanQuadrant(int v, int h) {
-		return battleField[v][h];
+		return battleFieldStatic[v][h];
 	}
 
-	public String getAggressorLocation() {
-		return "64_128";
+
+		public void destroyObject(int v, int h) {
+			battleFieldStatic[v][h] = new Emply(v*QUADRANT_PX,h*QUADRANT_PX);
+		}
+
+	@Override
+	public void draw(Graphics g) {
+		for (int j = 0; j < battleFieldStatic.length; j++) {
+			for (int k = 0; k < battleFieldStatic.length; k++) {
+				battleFieldStatic[j][k].draw(g);
+//				if (battleFieldDinamic[j][k] != null) {
+//					battleFieldDinamic[j][k].draw(g);
+//				}
+
+			}
+		}
 	}
 
+	public void updateQuadrant(int v, int h, BFObject str) {
+		battleFieldStatic[v][h] = str;
+	}
+
+	public int getQuadratPx() {
+		return QUADRANT_PX;
+	}
 	public int getBfWidth() {
 		return bfWidth;
 	}
-	
 	public int getBfHeight() {
 		return bfHeight;
 	}
+
 }

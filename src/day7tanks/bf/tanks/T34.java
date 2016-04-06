@@ -2,7 +2,7 @@ package day7tanks.bf.tanks;
 
 import java.awt.Color;
 
-import day7tanks.Direction;
+import day7tanks.bf.Direction;
 import day7tanks.bf.BattleField;
 
 public class T34 extends AbstractTank {

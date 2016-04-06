@@ -1,4 +1,4 @@
-package day7tanks.bf;
+package day7tanks.bf.objbf;
 
 import java.awt.Color;
 
