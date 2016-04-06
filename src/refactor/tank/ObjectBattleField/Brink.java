@@ -9,8 +9,10 @@ public class Brink extends ObjectBattleField {
     public Brink(int v, int h) {
 
         super(v, h);
-        color = new Color(0, 0, 255);
+        color = new Color(255, 118, 15);
     }
+
+
 
 
 }

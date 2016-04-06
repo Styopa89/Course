@@ -1,8 +1,10 @@
 package refactor.tank;
 
 
-import refactor.tank.objectbattlefield.*;
-import refactor.tank.tanks.*;
+
+
+import refactor.tank.Tanks.*;
+import refactor.tank.Tanks.AbstractTank;
 
 
 import java.awt.*;
@@ -17,21 +19,24 @@ public class ActionField extends JPanel {
     private Bullet bullet;
 
     public void runTheGame() throws Exception {
+        while(true) {
+            processFire(defender.fire());
+        }
 
     }
 
-//    private boolean legalMove (AbstractTank abstractTank) {
-//        this.defender = abstractTank;
-//        if ((abstractTank.getDirection() == Direction.UP && abstractTank.getY() == 0)
-//                || (abstractTank.getDirection() == Direction.DOWN && abstractTank.getY() >= battleField.getBfHeight() - battleField.getQuadratPx())
-//                || (abstractTank.getDirection() == Direction.LEFT && abstractTank.getX() == 0)
-//                || (abstractTank.getDirection() == Direction.RIGHT && abstractTank.getX() >= battleField.getBfWidth() - battleField.getQuadratPx())) {
-//            System.out.println("[illegal move] direction: " + abstractTank.getDirection()
-//                    + " tankX: " + abstractTank.getX() + ", tankY: " + abstractTank.getY());
-//            return true;
-//        }
-//        return false;
-//    }
+    private boolean legalMove (AbstractTank abstractTank) {
+        this.defender = abstractTank;
+        if ((abstractTank.getDirection() == Direction.UP && abstractTank.getY() == 0)
+                || (abstractTank.getDirection() == Direction.DOWN && abstractTank.getY() >= battleField.getBfHeight() - battleField.getQuadratPx())
+                || (abstractTank.getDirection() == Direction.LEFT && abstractTank.getX() == 0)
+                || (abstractTank.getDirection() == Direction.RIGHT && abstractTank.getX() >= battleField.getBfWidth() - battleField.getQuadratPx())) {
+            System.out.println("[illegal move] direction: " + abstractTank.getDirection()
+                    + " tankX: " + abstractTank.getX() + ", tankY: " + abstractTank.getY());
+            return true;
+        }
+        return false;
+    }
 
 //    private void cleanQuadrant(AbstractTank abstractTank) throws Exception {
 //        this.defender = abstractTank;
@@ -48,78 +53,64 @@ public class ActionField extends JPanel {
 //            x += 1;
 //        }
 //        if (battleField.scanQuadrant(y, x) instanceof Brink){
-////            abstractTank.fire();
+//            abstractTank.fire();
 //        }
 //    }
 
 
-//    public void processMove(AbstractTank abstractTank) throws Exception {
-//        this.defender = abstractTank;
-//        int step = 1;
-//        int covered = 0;
-//
-//        if (legalMove(abstractTank)) {
-//            return;
-//        }
-////        abstractTank.turn(abstractTank.getDirection());
-//
-//        cleanQuadrant(abstractTank);
-//
-//        while (covered < battleField.getQuadratPx()) {
-//            if (abstractTank.getDirection() == Direction.UP) {
-//                abstractTank.updateY(-step);
-////                System.out.println("[move up] direction: " + defender.getDirection()
-////                        + " tankX: " + defender.getX() + ", tankY: " + defender.getY());
-//            } else if (abstractTank.getDirection() == Direction.DOWN) {
-//                abstractTank.updateY(step);
-////                System.out.println("[move down] direction: " + defender.getDirection()
-////                        + " tankX: " + defender.getX() + ", tankY: " + defender.getY());
-//            } else if (abstractTank.getDirection() == Direction.LEFT) {
-//                abstractTank.updateX(-step);
-////                System.out.println("[move left] direction: " + defender.getDirection()
-////                        + " tankX: " + defender.getX() + ", tankY: " + defender.getY());
-//            } else {
-//                abstractTank.updateX(step);
-////                System.out.println("[move right] direction: " + defender.getDirection()
-////                        + " tankX: " + defender.getX() + ", tankY: " + defender.getY());
-//            }
-//            covered += step;
-//
-//            repaint();
-//            Thread.sleep(abstractTank.getSpeed());
-//        }
-//    }
+    public void processMove(AbstractTank abstractTank) throws Exception {
+        this.defender = abstractTank;
+        int step = 1;
+        int covered = 0;
 
-//    public void processTurn(AbstractTank abstractTank) throws Exception {
-//        repaint();
-//    }
+        if (legalMove(abstractTank)) {
+            return;
+        }
 
-//    public void processFire(Bullet bullet) throws Exception {
-//        this.bullet = bullet;
-//        int step = 1;
-//        while ((bullet.getX() > -14 && bullet.getX() < battleField.getBfWidth()) && (bullet.getY() > -14
-//                && bullet.getY() < battleField.getBfHeight()))  {
-//            if (bullet.getDirection() == Direction.UP) {
-//                bullet.updateY(-step);
-////                System.out.println("[move bullet up] direction: " + bullet.getDirection() + " bulletX: " + bullet.getX() + ", bulletY: " + bullet.getY());
-//            } else if (bullet.getDirection() == Direction.DOWN) {
-//                bullet.updateY(step);
-////                System.out.println("[move bullet down] direction: " + bullet.getDirection() + " bulletX: " + bullet.getX() + ", bulletY: " + bullet.getY());
-//            } else if (bullet.getDirection() == Direction.LEFT) {
-//                bullet.updateX(-step);
-////                System.out.println("[move bullet left] direction: " + bullet.getDirection() + " bulletX: " + bullet.getX() + ", bulletY: " + bullet.getY());
-//            } else {
-//                bullet.updateX(step);
-////                System.out.println("[move bullet right] direction: " + bullet.getDirection() + " bulletX: " + bullet.getX() + ", bulletY: " + bullet.getY());
-//            }
-//            if (processInterception()) {
-//                repaint();
-//                break;
-//            }
-//            repaint();
-//            Thread.sleep(bullet.getSpeed());
-//        }
-//    }
+        while (covered < battleField.getQuadratPx()) {
+            if (abstractTank.getDirection() == Direction.UP) {
+                abstractTank.updateY(-step);
+            } else if (abstractTank.getDirection() == Direction.DOWN) {
+                abstractTank.updateY(step);
+            } else if (abstractTank.getDirection() == Direction.LEFT) {
+                abstractTank.updateX(-step);
+            } else {
+                abstractTank.updateX(step);
+            }
+            covered += step;
+
+            repaint();
+            Thread.sleep(abstractTank.getSpeed());
+        }
+    }
+
+    public void processTurn(AbstractTank abstractTank) throws Exception {
+        repaint();
+    }
+
+    public void processFire(Bullet bullet) throws Exception {
+        System.out.println("--");
+        this.bullet = bullet;
+        int step = 1;
+        while ((bullet.getX() > -14 && bullet.getX() < battleField.getBfWidth()) && (bullet.getY() > -14
+                && bullet.getY() < battleField.getBfHeight()))  {
+            if (bullet.getDirection() == Direction.UP) {
+                bullet.updateY(-step);
+            } else if (bullet.getDirection() == Direction.DOWN) {
+                bullet.updateY(step);
+            } else if (bullet.getDirection() == Direction.LEFT) {
+                bullet.updateX(-step);
+            } else {
+                bullet.updateX(step);
+            }
+            if (processInterception()) {
+                repaint();
+                break;
+            }
+            repaint();
+            Thread.sleep(bullet.getSpeed());
+        }
+    }
 
 
 
@@ -131,7 +122,9 @@ public class ActionField extends JPanel {
 //        return (y / battleField.getQuadratPx()) + "_" + (x / battleField.getQuadratPx());
 //    }
 
-//    private boolean processInterception() throws Exception {
+    private boolean processInterception() throws Exception {
+        return battleField.hitBullet(bullet);
+
 //        String quadrant = getQuadrant(bullet.getX(), bullet.getY());
 //        int v = Integer.valueOf(quadrant.substring(0, quadrant.indexOf("_")));
 //        int h = Integer.valueOf(quadrant.substring(quadrant.indexOf("_") + 1));
@@ -158,7 +151,7 @@ public class ActionField extends JPanel {
 ////            }
 //        }
 //        return false;
-//    }
+    }
 
 //    private boolean checkInterception(String object, String quadrant) {
 //        int oy = Integer.valueOf(object.substring(0, object.indexOf("_")));
@@ -176,21 +169,13 @@ public class ActionField extends JPanel {
 //    }
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
     public ActionField() throws Exception {
-
-        String[][] bf = {
-                {"B", "B", "B", "B", "B", "B", "B", "B", "B"},
-                {"B", " ", " ", " ", " ", " ", " ", " ", "B"},
-                {"B", "B", "B", " ", "B", " ", "B", "B", "B"},
-                {"B", "B", "B", " ", "W", " ", "B", "B", "B"},
-                {"B", "B", "B", " ", "W", " ", "B", "B", "B"},
-                {"B", "B", " ", "R", "R", "R", " ", "B", "B"},
-                {"B", "B", " ", " ", " ", " ", " ", "B", "B"},
-                {"B", " ", " ", "B", "B", "B", " ", " ", "B"},
-                {"B", " ", " ", "B", "E", "B", " ", " ", "B"}
-        };
-        battleField = new BattleField(bf);
-
+        battleField = new BattleField();
+        defender = new BT7(128, 512, Direction.UP);
+        agressor = new T34(128, 128, Direction.RIGHT);
+        bullet = new Bullet(defender, -100, -100, Direction.NONE);
 
         JFrame frame = new JFrame("BATTLE FIELD - CLASS");
         frame.setLocation(750, 150);
@@ -204,19 +189,10 @@ public class ActionField extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        int i = 0;
-        Color cc;
-
-
-        for (int j = 0; j < battleField.getDimentionY(); j++) {
-            for (int k = 0; k < battleField.getDimentionX(); k++) {
-                   battleField.scanQuadrant(j,k).draw(g);
-            }
-        }
-//            defender.draw( g);
-//            agressor.draw( g);
-//            bullet.draw(g);
+        battleField.draw(g);
+        defender.draw( g);
+        agressor.draw( g);
+        bullet.draw(g);
 
     }
 

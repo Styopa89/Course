@@ -1,13 +1,13 @@
 package refactor.tank;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 import java.util.Random;
 
-import refactor.tank.objectbattlefield.*;
+import refactor.tank.Interface.Drawable;
+import refactor.tank.ObjectBattleField.*;
 
-public class BattleField {
+public class BattleField implements Drawable {
 
         private final static int QUADRANT_PX = 64;
         private int v = 9;
@@ -17,7 +17,19 @@ public class BattleField {
         private ObjectBattleField[][] battleField ;
 
         public BattleField() {
-            this.battleField = generateBattleField();
+//            this.battleField = generateBattleField();
+            String[][] bf = {
+                    {"B", "B", "B", "B", "B", "B", "B", "B", "B"},
+                    {"B", " ", " ", " ", " ", " ", " ", " ", "B"},
+                    {"B", "B", " ", " ", "B", " ", "B", "B", "B"},
+                    {"B", "B", "R", " ", "W", " ", "B", "B", "B"},
+                    {"B", "B", "W", " ", "W", " ", "B", "B", "B"},
+                    {"B", "B", "B", "R", "R", "R", " ", "B", "B"},
+                    {"B", "B", " ", " ", " ", " ", " ", "B", "B"},
+                    {"B", " ", " ", "B", "B", "B", " ", " ", "B"},
+                    {"B", " ", " ", "B", "E", "B", " ", " ", "B"}
+            };
+            this.battleField = arrayToListBattleFild(bf);
 
         }
 
@@ -73,16 +85,30 @@ public class BattleField {
             return battleField[v][h];
         }
 
-        public int getDimentionY() {
-        return battleField.length;
+        public boolean hitBullet(Bullet b){
+
+//            if (battleField[h][v] instanceof Emply || battleField[h][v] instanceof Water) {
+//                return false;
+//            }
+//            if (battleField[h][v] instanceof Rock && !(b.getTank() instanceof Tiger)){
+//                return true;
+//            }
+//            battleField[h][v] = new Emply(h,v);
+//            return true;
+        }
+
+    @Override
+    public void draw(Graphics g) {
+        for (int j = 0; j < battleField.length; j++) {
+            for (int k = 0; k < battleField.length; k++) {
+                battleField[j][k].draw(g);
+            }
+        }
     }
 
-       public int getDimentionX() {
-        return battleField[0].length;
-    }
        public void updateQuadrant(int v, int h, ObjectBattleField str) {
         battleField[v][h] = str;
-    }
+        }
 
         public int getQuadratPx() {
             return QUADRANT_PX;
@@ -90,16 +116,7 @@ public class BattleField {
         public int getBfWidth() {
             return bfWidth;
         }
-
         public int getBfHeight() {
             return bfHeight;
-        }
-
-        public int getV() {
-            return v;
-        }
-
-        public int getH() {
-            return h;
         }
 }

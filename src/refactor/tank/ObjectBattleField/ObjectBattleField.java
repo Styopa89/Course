@@ -1,6 +1,7 @@
 package refactor.tank.ObjectBattleField;
 
 
+import refactor.tank.Bullet;
 import refactor.tank.Interface.Drawable;
 
 import java.awt.*;
@@ -21,7 +22,6 @@ public abstract class ObjectBattleField implements Drawable {
         int y = vertical * 64;
         g.setColor(color);
         g.fillRect(x, y, 64, 64);
-
     }
 
     public int getVertical() {
@@ -39,4 +39,12 @@ public abstract class ObjectBattleField implements Drawable {
     public void setHorizontal(int horizontal) {
         this.horizontal = horizontal;
     }
+
+    public boolean bulletDestroyObjectBF(Bullet b) {
+        return false;
+    }
+
+
+
+
 }

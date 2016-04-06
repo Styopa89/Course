@@ -12,10 +12,8 @@ public class Water extends ObjectBattleField implements Drawable {
 
     public Water(int v, int h) {
         super(v, h);
+        color = Color.BLUE;
     }
 
-    @Override
-    public void draw(Graphics g) {
 
-    }
 }
