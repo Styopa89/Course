@@ -9,7 +9,7 @@ public class DemoNumberFibonacci {
         while (true) {
             System.out.println("BigInteger");
             System.out.println("What number Fibonacci would you like see?");
-            System.out.println("Pleasse, write index");
+            System.out.println("Please, write index");
             Scanner s = new Scanner(System.in);
             int i = s.nextInt();
             nf.numberFibonachiWithTime(i);
