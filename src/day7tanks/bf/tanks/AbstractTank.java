@@ -106,7 +106,17 @@ public abstract class AbstractTank implements Tank {
 	public int getY() {
 		return y;
 	}
-	
+
+	@Override
+	public int getHorizontal() {
+		return getX() / BattleField.QUADRANT_PX;
+	}
+
+	@Override
+	public int getVertical() {
+		return getY() / BattleField.QUADRANT_PX;
+	}
+
 	public int getSpeed() {
 		return speed;
 	}

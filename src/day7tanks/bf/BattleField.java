@@ -13,7 +13,6 @@ public class BattleField implements Drawable {
 	private int bfWidth = QUADRANT_PX * h;
 	private	int bfHeight = QUADRANT_PX * v;
 	private BFObject[][] battleFieldStatic;
-//	private BFObject[][] battleFieldDinamic;
 
 
 	public BattleField() {
@@ -30,13 +29,10 @@ public class BattleField implements Drawable {
 				{"B", " ", " ", "B", "E", "W", " ", " ", "B"}
 		};
 		this.battleFieldStatic = arrayBattleFildStatic(bf);
-//		this.battleFieldDinamic = arrayBattleFieldDinamic();
-
 	}
 
 	public BattleField(String[][] bf) {
 		this.battleFieldStatic = arrayBattleFildStatic(bf);
-//		this.battleFieldDinamic = arrayBattleFieldDinamic();
 	}
 
 	private BFObject[][] arrayBattleFildStatic(String[][] bf) {
@@ -60,17 +56,6 @@ public class BattleField implements Drawable {
 		} return battleField;
 
 	}
-
-//	private BFObject[][] arrayBattleFieldDinamic () {
-//		return new BFObject[v][h];
-//	}
-//
-//	public void addTank(Tank tank) {
-//		int v = tank.getY() / QUADRANT_PX;
-//		int h = tank.getX() / QUADRANT_PX;
-//		battleFieldDinamic[v][h] = tank;
-//	}
-
 
 //	private BFObject[][] generateBattleField() {
 //		BFObject[][] battleField = new BFObject[v][h];
@@ -108,9 +93,6 @@ public class BattleField implements Drawable {
 		for (int j = 0; j < battleFieldStatic.length; j++) {
 			for (int k = 0; k < battleFieldStatic.length; k++) {
 				battleFieldStatic[j][k].draw(g);
-//				if (battleFieldDinamic[j][k] != null) {
-//					battleFieldDinamic[j][k].draw(g);
-//				}
 
 			}
 		}
@@ -120,9 +102,6 @@ public class BattleField implements Drawable {
 		battleFieldStatic[v][h] = str;
 	}
 
-	public int getQuadratPx() {
-		return QUADRANT_PX;
-	}
 	public int getBfWidth() {
 		return bfWidth;
 	}

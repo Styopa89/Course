@@ -44,6 +44,12 @@ public class Bullet implements Drawable, Destroyable {
 	public boolean isDestroyed() {
 		return destroyed;
 	}
+	public int getVertical(){
+		return getY() / BattleField.QUADRANT_PX;
+	}
+	public int getHorizontal(){
+		return getX() / BattleField.QUADRANT_PX;
+	}
 
 	public int getSpeed() {
 		return speed;

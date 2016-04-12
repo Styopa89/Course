@@ -56,24 +56,20 @@ public class ActionField extends JPanel {
 		
 		for (int i = 0; i < tank.getMovePath(); i++) {
 			int covered = 0;
+			int v = tank.getVertical();
+			int h = tank.getHorizontal();
 
-			String tankQuadrant = getQuadrant(tank.getX(), tank.getY());
-			int v = Integer.parseInt(tankQuadrant.split("_")[0]);
-			int h = Integer.parseInt(tankQuadrant.split("_")[1]);
-
-			// check limits x: 0, 513; y: 0, 513
 			if ((direction == Direction.UP && tank.getY() == 0) || (direction == Direction.DOWN && tank.getY() >= 512)
 					|| (direction == Direction.LEFT && tank.getX() == 0) || (direction == Direction.RIGHT && tank.getX() >= 512)) {
 				System.out.println("[illegal move] direction: " + direction
 						+ " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				return;
 			}
-			
-			// check next quadrant before move
+
 			if (direction == Direction.UP) {
-				v++;
-			} else if (direction == Direction.DOWN) {
 				v--;
+			} else if (direction == Direction.DOWN) {
+				v++;
 			} else if (direction == Direction.RIGHT) {
 				h++;
 			} else if (direction == Direction.LEFT) {
@@ -133,9 +129,8 @@ public class ActionField extends JPanel {
 	}
 
 	private boolean processInterception() {
-		String coordinates = getQuadrant(bullet.getX(), bullet.getY());
-		int y = Integer.parseInt(coordinates.split("_")[0]);
-		int x = Integer.parseInt(coordinates.split("_")[1]);
+		int y = bullet.getVertical();
+		int x = bullet.getHorizontal();
 
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			BFObject bfObject = battleField.scanQuadrant(y, x);
@@ -145,13 +140,13 @@ public class ActionField extends JPanel {
 			}
 			
 			// check aggressor
-			if (!aggressor.isDestroyed() && checkInterception(getQuadrant(aggressor.getX(), aggressor.getY()), coordinates)) {
+			if (!aggressor.isDestroyed() && checkInterception(aggressor, bullet)) {
 				aggressor.destroy();
 				return true;
 			}
 
 			// check aggressor
-			if (!defender.isDestroyed() && checkInterception(getQuadrant(defender.getX(), defender.getY()), coordinates)) {
+			if (!defender.isDestroyed() && checkInterception(defender, bullet)) {
 				defender.destroy();
 				return true;
 			}
@@ -159,12 +154,12 @@ public class ActionField extends JPanel {
 		return false;
 	}
 	
-	private boolean checkInterception(String object, String quadrant) {
-		int oy = Integer.parseInt(object.split("_")[0]);
-		int ox = Integer.parseInt(object.split("_")[1]);
+	private boolean checkInterception(Tank tank, Bullet bullet) {
+		int oy = tank.getVertical();
+		int ox = tank.getHorizontal();
 
-		int qy = Integer.parseInt(quadrant.split("_")[0]);
-		int qx = Integer.parseInt(quadrant.split("_")[1]);
+		int qy = bullet.getVertical();
+		int qx = bullet.getHorizontal();
 
 		if (oy >= 0 && oy < 9 && ox >= 0 && ox < 9) {
 			if (oy == qy && ox == qx) {
@@ -174,17 +169,11 @@ public class ActionField extends JPanel {
 		return false;
 	}
 
-	public String getQuadrant(int x, int y) {
-		// input data should be correct
-		return y / 64 + "_" + x / 64;
-	}
-
 	public ActionField() throws Exception {
 		battleField = new BattleField();
 		defender = new T34(battleField);
 		aggressor = new BT7(battleField, 128, 128, Direction.RIGHT);
-//		battleField.addTank(defender);
-//		battleField.addTank(aggressor);
+
 
 		bullet = new Bullet(-100, -100, Direction.NONE);
 

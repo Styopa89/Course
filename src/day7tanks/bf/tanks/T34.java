@@ -20,7 +20,7 @@ public class T34 extends AbstractTank {
 	}
 
 	private Object[] actoins = new Object[] {
-		Direction.RIGHT,
+		Direction.UP,
 		Action.FIRE,
 		Action.MOVE,
 		Action.FIRE,

@@ -29,6 +29,6 @@ public class BT7 extends AbstractTank {
 
 	@Override
 	public Action setUp() {
-		return Action.MOVE;
+		return Action.FIRE;
 	}
 }

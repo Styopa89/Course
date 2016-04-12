@@ -12,10 +12,6 @@ public interface Tank extends BFObject {
 
 	public Bullet fire();
 
-	public int getX();
-
-	public int getY();
-	
 	public Direction getDirection();
 	
 	public void updateX(int x);

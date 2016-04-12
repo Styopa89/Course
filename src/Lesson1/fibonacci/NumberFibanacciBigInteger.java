@@ -1,32 +1,39 @@
 package Lesson1.fibonacci;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class NumberFibanacciBigInteger {
         private List<CheckPoint> checkPointList = new ArrayList<>();
         private int checkPoint = 10000;
 
+        Map a = new TreeMap<>();
+
+
         public NumberFibanacciBigInteger() {
            checkPointList.add(new CheckPoint(BigInteger.valueOf(0), BigInteger.valueOf(1)));
         }
 
-        public void numberFibonachiWithTime(int number) {
-            long time = System.currentTimeMillis();
-            System.out.println(seachNumberFibanacci(number));
-            System.out.println("Time operations : " + (System.currentTimeMillis() - time) + " ms");
+        public long time() {
+            return System.currentTimeMillis();
         }
 
-        private BigInteger seachNumberFibanacci(int number) {
+        public void seachNumberFibanacci() {
+            int number = 1;
+            long starTimer =  time();
             int cpIndex = number / checkPoint;
             int index = number%checkPoint;
-            System.out.println(cpIndex + "  " + checkPointList.size());
             while (cpIndex >= checkPointList.size()){
-                checkPointList.add(numberFibonacci(checkPoint, checkPointList.get(checkPointList.size()-1)));
+                checkPointList.add(numberFibonacci(checkPoint, checkPointList.get(checkPointList.size() - 1)));
             }
-            System.out.println(cpIndex + "  " + checkPointList.size());
-            return numberFibonacci(index, checkPointList.get(cpIndex)).getLast();
+            long endTimer = time() - starTimer;
+            printResult(numberFibonacci(index, checkPointList.get(cpIndex)).getLast(), endTimer);
+
+        }
+
+        private void printResult(BigInteger last, Long timer){
+            System.out.println(last + "  " + timer);
+
         }
 
         private CheckPoint  numberFibonacci(int i, CheckPoint cp) {

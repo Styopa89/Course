@@ -1,5 +1,6 @@
 package day7tanks.bf.objbf;
 
+import day7tanks.bf.BattleField;
 import day7tanks.bf.objbf.BFObject;
 
 import java.awt.Color;
@@ -8,7 +9,6 @@ import java.awt.Graphics;
 
 public abstract class SimpleBFObject implements BFObject {
 
-	// current position on BF
 	private int x;
 	private int y;
 
@@ -32,7 +32,7 @@ public abstract class SimpleBFObject implements BFObject {
 	public void draw(Graphics g) {
 		if (!isDestroyed) {
 			g.setColor(this.color);
-			g.fillRect(this.getX(), this.getY(), 64, 64);
+			g.fillRect(this.getX(), this.getY(), BattleField.QUADRANT_PX, BattleField.QUADRANT_PX);
 		}
 	}
 	
@@ -47,4 +47,13 @@ public abstract class SimpleBFObject implements BFObject {
 	public int getY() {
 		return y;
 	}
+
+	public int getHorizontal() {
+		return getX() / BattleField.QUADRANT_PX;
+	}
+
+	public int getVertical() {
+		return getY() / BattleField.QUADRANT_PX;
+	}
+
 }
