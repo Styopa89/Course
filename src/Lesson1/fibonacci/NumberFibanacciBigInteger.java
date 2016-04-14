@@ -1,42 +1,79 @@
 package Lesson1.fibonacci;
 
+import java.lang.Integer;
 import java.math.BigInteger;
 import java.util.*;
 
 public class NumberFibanacciBigInteger {
-        private List<CheckPoint> checkPointList = new ArrayList<>();
+        private Map<Integer,CheckPoint> checkPointCollection = new HashMap<>();
         private int checkPoint = 10000;
-
-        Map a = new TreeMap<>();
-
+        private int oftenNumber = 10000;
+        private Integer lastIndexCheckPoint;
+        private long timer;
 
         public NumberFibanacciBigInteger() {
-           checkPointList.add(new CheckPoint(BigInteger.valueOf(0), BigInteger.valueOf(1)));
+            checkPointCollection.put(1,new CheckPoint(BigInteger.valueOf(0), BigInteger.valueOf(0)));
+            lastIndexCheckPoint = 2;
+            checkPointCollection.put(lastIndexCheckPoint,new CheckPoint(BigInteger.valueOf(0), BigInteger.valueOf(1)));
         }
 
-        public long time() {
-            return System.currentTimeMillis();
+        public void numberFibonacci(){
+            int number = startUI();
+            timerStart();
+            changeAndPreparationCollection(number);
+            BigInteger result = seachNumberFibanacci(number);
+            timerStop();
+            printResult(result);
+            numberFibonacci();
+
         }
 
-        public void seachNumberFibanacci() {
-            int number = 1;
-            long starTimer =  time();
-            int cpIndex = number / checkPoint;
-            int index = number%checkPoint;
-            while (cpIndex >= checkPointList.size()){
-                checkPointList.add(numberFibonacci(checkPoint, checkPointList.get(checkPointList.size() - 1)));
+        private void timerStart() {
+            timer = System.currentTimeMillis();
+        }
+
+        private void timerStop() {
+            timer = System.currentTimeMillis() - timer;
+        }
+
+        private int startUI(){
+            System.out.println("BigInteger");
+            System.out.println("What number Fibonacci would you like to see?");
+            System.out.println("Please, write index");
+            Scanner s = new Scanner(System.in);
+            return s.nextInt();
+           }
+
+
+        private BigInteger seachNumberFibanacci(Integer number) {
+            if (number < oftenNumber) {
+                return checkPointCollection.get(number).getLast();
             }
-            long endTimer = time() - starTimer;
-            printResult(numberFibonacci(index, checkPointList.get(cpIndex)).getLast(), endTimer);
+            System.out.println(number + "  " + (number-(number%checkPoint)));
+            return calcNumberFibonacci(number%checkPoint, checkPointCollection.get(number-(number%checkPoint))).getLast();
+        }
+        private void changeAndPreparationCollection(int number) {
+            while (number > lastIndexCheckPoint) {
+                if (lastIndexCheckPoint < oftenNumber) {
+                    CheckPoint lastCheckPoint = calcNumberFibonacci(1, checkPointCollection.get(lastIndexCheckPoint));
+                    checkPointCollection.put(++lastIndexCheckPoint, lastCheckPoint);
+//                    System.out.println(lastIndexCheckPoint + "   " + checkPointCollection.get(lastIndexCheckPoint).getLast());
+
+                } else while (number >= lastIndexCheckPoint){
+                    lastIndexCheckPoint += checkPoint;
+                    checkPointCollection.put(lastIndexCheckPoint, calcNumberFibonacci(checkPoint,checkPointCollection.get(lastIndexCheckPoint - checkPoint)));
+//                    System.out.println(lastIndexCheckPoint + "   " + checkPointCollection.get(lastIndexCheckPoint).getLast());
+                }
+            }
+        }
+
+        private void printResult(BigInteger last){
+            System.out.println(last);
+            System.out.println("Time operations : " + timer + " ms");
 
         }
 
-        private void printResult(BigInteger last, Long timer){
-            System.out.println(last + "  " + timer);
-
-        }
-
-        private CheckPoint  numberFibonacci(int i, CheckPoint cp) {
+        private CheckPoint  calcNumberFibonacci(int i, CheckPoint cp) {
             BigInteger lastElement = cp.getLast();
             BigInteger preLastElement = cp.getPreLast();
             BigInteger result;
