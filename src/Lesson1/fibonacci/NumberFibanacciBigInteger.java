@@ -20,7 +20,7 @@ public class NumberFibanacciBigInteger {
         public void numberFibonacci(){
             int number = startUI();
             timerStart();
-            changeAndPreparationCollection(number);
+            changeAndPrepareCollection(number);
             BigInteger result = seachNumberFibanacci(number);
             timerStop();
             printResult(result);
@@ -37,11 +37,15 @@ public class NumberFibanacciBigInteger {
         }
 
         private int startUI(){
-            System.out.println("BigInteger");
             System.out.println("What number Fibonacci would you like to see?");
             System.out.println("Please, write index");
             Scanner s = new Scanner(System.in);
-            return s.nextInt();
+            int index = s.nextInt();
+            if (index <= 0) {
+                System.out.println("You have entered incorrect index!");
+                index = 1;
+            }
+            return index;
            }
 
 
@@ -49,26 +53,25 @@ public class NumberFibanacciBigInteger {
             if (number < oftenNumber) {
                 return checkPointCollection.get(number).getLast();
             }
-            System.out.println(number + "  " + (number-(number%checkPoint)));
+//            System.out.println(number + "  " + (number-(number%checkPoint)));
             return calcNumberFibonacci(number%checkPoint, checkPointCollection.get(number-(number%checkPoint))).getLast();
         }
-        private void changeAndPreparationCollection(int number) {
-            while (number > lastIndexCheckPoint) {
+        private void changeAndPrepareCollection(int number) {
+            while (number >= lastIndexCheckPoint) {
                 if (lastIndexCheckPoint < oftenNumber) {
                     CheckPoint lastCheckPoint = calcNumberFibonacci(1, checkPointCollection.get(lastIndexCheckPoint));
                     checkPointCollection.put(++lastIndexCheckPoint, lastCheckPoint);
 //                    System.out.println(lastIndexCheckPoint + "   " + checkPointCollection.get(lastIndexCheckPoint).getLast());
-
-                } else while (number >= lastIndexCheckPoint){
+                }   else {
                     lastIndexCheckPoint += checkPoint;
-                    checkPointCollection.put(lastIndexCheckPoint, calcNumberFibonacci(checkPoint,checkPointCollection.get(lastIndexCheckPoint - checkPoint)));
+                    checkPointCollection.put(lastIndexCheckPoint, calcNumberFibonacci(checkPoint, checkPointCollection.get(lastIndexCheckPoint - checkPoint)));
 //                    System.out.println(lastIndexCheckPoint + "   " + checkPointCollection.get(lastIndexCheckPoint).getLast());
                 }
             }
         }
 
-        private void printResult(BigInteger last){
-            System.out.println(last);
+        private void printResult(BigInteger result){
+            System.out.println(result);
             System.out.println("Time operations : " + timer + " ms");
 
         }
