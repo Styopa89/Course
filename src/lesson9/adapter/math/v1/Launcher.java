@@ -14,7 +14,7 @@ public class Launcher {
 
 		Random r = new Random();
 		for (int i = 0; i < 5; i++) {
-			System.out.println(o.createSummaryReport(r.nextInt(100)));
+			System.out.println(o.createSummaryReport(i));//r.nextInt(100)));
 		}
 	}
 }
