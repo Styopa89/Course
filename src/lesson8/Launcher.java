@@ -1,8 +1,8 @@
 package lesson8;
 
+
 import java.util.*;
 
-import static java.util.Collections.*;
 
 public class Launcher {
 
