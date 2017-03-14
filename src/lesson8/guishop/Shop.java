@@ -22,7 +22,6 @@ public class Shop {
         product.add(new Product("BMW"));
         product.add(new Product("WV"));
         product.add(new Product("MERCEDES"));
-//        product.add(new Product("<html><font size = +1 color = black>LLL</font>"));
     }
 
 }

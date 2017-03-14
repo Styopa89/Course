@@ -1,8 +1,0 @@
-package Lesson4;
-
-
-public enum Color {
-
-    WHITE, YELLOW, ORANGE, PINK, RED, BROWN, GREEN, BLUE, PURPLE, GREY, BLACK, SILVER, GOLD, DARK_RED, DARK_BLUE,
-    DARK_GREEN
-}
